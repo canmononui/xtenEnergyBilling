@@ -1,0 +1,742 @@
+<div style="padding-bottom: 15px;">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-auto">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Tower A</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Tower A</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto pl-0">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">{{ selectFloor }}</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a (click)="onSelectFloor(0, 'Floor 1')" class="dropdown-item">Floor 1</a>
+              <!-- <a (click)="onSelectFloor(1, 'Floor 2')" class="dropdown-item">Floor 2</a> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-auto pl-0">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <a>MDB </a><a *ngIf="selectOptionMDB != ''">{{ selectOptionMDB }}</a>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div *ngFor="let data of valueOptionMDB;" (click)="onSelectMDB(data.sensor_id, data.name)" class="dropdown-item">
+                <a>MDB </a><a>{{ data.name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto text-right">
+      <div class="row">
+        <div class="col-auto">
+          <button [routerLink]="['/energy-power-quality-all-meter']" type="button" class="btn btn-color">All Meter</button>
+        </div>
+        <div class="col-auto pl-0">
+          <input type="text" class="form-control input-color" placeholder="ค้นหา">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 CARD ROW 1 -->
+  <div class="row row-margin" style="margin-top: 30px;">
+    <!-- CARD 1 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Voltage line to line</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Va-b</td>
+              <td>{{ valueDisplay.vab }}</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Va-c</td>
+              <td>{{ valueDisplay.vac }}</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Vb-c</td>
+              <td>{{ valueDisplay.vbc }}</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Vavg</td>
+              <td>{{ valueDisplay.vavg }}</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 1 -->
+
+    <!-- CARD 2 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Unbalance Voltage</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Negative-sequence voltage</td>
+              <td>{{ valueDisplay.nsv }}</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Positive-sequence voltage</td>
+              <td>{{ valueDisplay.psv }}</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>%Unbalance voltage</td>
+              <td>{{ valueDisplay.uv }}</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 2 -->
+  </div>
+  <!-- END 2 CARD ROW 1 -->
+
+  <!-- 2 CARD ROW 2 -->
+  <div class="row row-margin" style="margin-top: 16px;">
+    <!-- CARD 1 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Frequency</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Freq</td>
+              <td>{{ valueDisplay.freq }}</td>
+              <td>Hz</td>
+              <td>±0.5</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 1 -->
+
+    <!-- CARD 2 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Current</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ia</td>
+              <td>{{ valueDisplay.ia }}</td>
+              <td>Amp</td>
+              <td>75% Breaker</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Ib</td>
+              <td>{{ valueDisplay.ib }}</td>
+              <td>Amp</td>
+              <td>75% Breaker</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Ic</td>
+              <td>{{ valueDisplay.ic }}</td>
+              <td>Amp</td>
+              <td>75% Breaker</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>In</td>
+              <td>{{ valueDisplay.i_n }}</td>
+              <td>Amp</td>
+              <td>75% Breaker</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Iare</td>
+              <td>{{ valueDisplay.iare }}</td>
+              <td>Amp</td>
+              <td>75% Breaker</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 2 -->
+  </div>
+  <!-- END 2 CARD ROW 2 -->
+
+  <!-- 2 CARD ROW 3 -->
+  <div class="row row-margin" style="margin-top: 16px;">
+    <!-- CARD 1 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Power Quality</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>P</td>
+              <td>{{ valueDisplay.p }}</td>
+              <td>kw</td>
+              <td>-</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>Q</td>
+              <td>{{ valueDisplay.q }}</td>
+              <td>kvar</td>
+              <td>-</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>S</td>
+              <td>{{ valueDisplay.s }}</td>
+              <td>kva</td>
+              <td>-</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 1 -->
+
+    <!-- CARD 2 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Power Factor Quality</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PFa</td>
+              <td>{{ valueDisplay.pfa }}</td>
+              <td>-</td>
+              <td>> 0.85</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>PFb</td>
+              <td>{{ valueDisplay.pfb }}</td>
+              <td>-</td>
+              <td>> 0.85</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>PFc</td>
+              <td>{{ valueDisplay.pfc }}</td>
+              <td>-</td>
+              <td>> 0.85</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>PF</td>
+              <td>{{ valueDisplay.pf }}</td>
+              <td>-</td>
+              <td>> 0.85</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 2 -->
+  </div>
+  <!-- END 2 CARD ROW 3 -->
+
+  <!-- 2 CARD ROW 4 -->
+  <div class="row row-margin" style="margin-top: 16px;">
+    <!-- CARD 1 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Total Harmonic Distortion Voltage</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>%THDVa</td>
+              <td>< {{ valueDisplay.thdva }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>%THDVb</td>
+              <td>< {{ valueDisplay.thdvb }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>%THDVc</td>
+              <td>< {{ valueDisplay.thdvc }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 1 -->
+
+    <!-- CARD 2 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Total Harmonic Distortion Current</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+        
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>%THDIa</td>
+              <td>< {{ valueDisplay.thdia }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>%THDIb</td>
+              <td>< {{ valueDisplay.thdib }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>%THDIc</td>
+              <td><{{ valueDisplay.thdic }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>%THDIn</td>
+              <td><{{ valueDisplay.thdin }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 2 -->
+  </div>
+  <!-- END 2 CARD ROW 4 -->
+
+  <!-- 2 CARD ROW 5 -->
+  <div class="row row-margin" style="margin-top: 16px;">
+    <!-- CARD 1 -->
+    <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Harmonic Distortion</p>
+          </div>
+        </div>
+        <!-- END ROW 1 TOP -->
+
+        <!-- LOADING -->
+        <div *ngIf="valueDisplay == undefined">
+          <app-loading></app-loading>
+        </div>
+        <!-- END LOADING -->
+
+        <!-- ROW 2 TABLE -->
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Base</th>
+              <th scope="col">Units</th>
+              <th scope="col">Limits</th>
+              <th scope="col">Value</th>
+              <th scope="col">Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>I3</td>
+              <td><{{ valueDisplay.i3 }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>I5</td>
+              <td><{{ valueDisplay.i5 }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>I7</td>
+              <td><{{ valueDisplay.i7 }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>I9</td>
+              <td><{{ valueDisplay.i9 }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>I11</td>
+              <td><{{ valueDisplay.i11 }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>I13</td>
+              <td><{{ valueDisplay.i13 }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+            <tr>
+              <td>I15</td>
+              <td><{{ valueDisplay.i15 }}%</td>
+              <td>%</td>
+              <td>IEEE519-1992 8% for MDB</td>
+              <td>-</td>
+              <td>ALIVE</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END ROW 2 TABLE -->
+      </div>
+    </div>
+    <!-- END CARD 1 -->
+  </div>
+  <!-- END 2 CARD ROW 5 -->
+</div>

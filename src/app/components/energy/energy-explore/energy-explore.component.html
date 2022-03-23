@@ -1,0 +1,176 @@
+<div style="padding-bottom: 15px;">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-auto">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Tower A</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Tower A</a>
+              <a class="dropdown-item">Tower B</a>
+              <a class="dropdown-item">Tower C</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto pl-0">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Floor 1</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Floor 1</a>
+              <a class="dropdown-item">Floor 2</a>
+              <a class="dropdown-item">Floor 3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto text-right">
+      <div class="row">
+        <div class="col-auto">
+          <button (click)="onClickGraphABtn()" type="button" class="btn btn-color-active">Graph A</button>
+        </div>
+        <div class="col-auto pl-0">
+          <button type="button" class="btn btn-color">Graph B</button>
+        </div>
+        <div class="col-auto pl-0">
+          <button type="button" class="btn btn-color">Graph C</button>
+        </div>
+        <div class="col-auto pl-0">
+          <button type="button" class="btn btn-color">Graph D</button>
+        </div>
+        <div class="col-auto pl-0">
+          <input type="text" class="form-control input-color" placeholder="ค้นหา">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEFT SIDE BAR -->
+  <div *ngIf="leftSideBarDisplay" class="modal-sidebar">
+    <div class="row">
+      <div class="col align-self-center">
+        <p class="color-white mb-0">Graph A</p>
+      </div>
+      <div class="col-auto align-self-center">
+        <button (click)="onClickCloseBtn()" type="button" class="btn btn-sidebar-x">
+          <img class="sidebar-arrow-right" src="../../assets/img/XIcon.svg">
+        </button>
+      </div>
+    </div>
+
+
+    <div *ngFor="let data of valueSensorTree; let i = index;">
+      <p class="color-white mb-0" style="margin-top: 15px;">{{ data.name }}</p>
+      <!-- DROPDOWN GROUP -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="row">
+            <div class="col color-dark text-left">
+              <p class="mb-0">{{ data.dropdownSelect }}</p>
+            </div>
+            <div class="col-auto pl-0 justify-content-center align-self-center">
+              <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
+            </div>
+          </div>
+        </button>
+        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+          <div *ngFor="let data of valueParameterMdb;">
+            <a (click)="onParameterMdb(i, data)" class="dropdown-item">{{ data }}</a>
+          </div>
+        </div>
+      </div>
+      <!-- END DROPDOWN GROUP -->
+      <div *ngFor="let _data of data.listUnderSensors; let j = index;" style="margin-left: 15px;">
+        <p class="color-white mb-0" style="margin-top: 15px;">{{ _data.name }}</p>
+        <!-- DROPDOWN SENSOR -->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="row">
+              <div class="col color-dark text-left">
+                <p class="mb-0">{{ _data.dropdownSelect }}</p>
+              </div>
+              <div class="col-auto pl-0 justify-content-center align-self-center">
+                <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
+              </div>
+            </div>
+          </button>
+          <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+            <div *ngFor="let data of valueParameterMeter;">
+              <a (click)="onParameterMeter(i, j, data)" class="dropdown-item">{{ data }}</a>
+            </div>
+          </div>
+        </div>
+        <!-- END DROPDOWN SENSOR -->
+      </div>
+    </div>
+
+    <p class="color-white mb-0" style="margin-top: 15px;">ตัวเลือกช่วงเวลา</p>
+    <!-- DROPDOWN DATEPICKER -->
+    <div class="dropdown" style="margin-top: 15px;">
+      <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="row">
+          <div class="col color-dark text-left">
+            <p class="mb-0">Date</p>
+          </div>
+          <div class="col-auto pl-0 justify-content-center align-self-center">
+            <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
+          </div>
+        </div>
+      </button>
+      <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item">Floor 1</a>
+        <a class="dropdown-item">Floor 2</a>
+        <a class="dropdown-item">Floor 3</a>
+      </div>
+    </div>
+    <!-- END DROPDOWN DATEPICKER -->
+  </div>  
+  <!-- END LEFT SIDE BAR -->
+
+  <!-- WAITTING SEARCH-->
+  <div [hidden]="!waittingSearch" class="text-center" style="margin-top: 375px;">
+    <p class="color-white mb-0">โปรดเลือกข้อมูล</p>
+  </div>
+  <!-- END WAITTING SEARCH-->
+
+  <!-- CHART A -->
+  <div [hidden]="waittingSearch" class="card-border-25" style="height: 100%; margin-top: 15px;">
+    <div class="row" style="margin-bottom: 64px;">
+      <div class="col">
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Chart A</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-auto">
+        <i class="fa fa-bars fa-lg color-white" aria-hidden="true"></i>
+      </div>
+    </div>
+    <canvas id="chartA"></canvas>
+  </div>
+  <!-- END CHART A -->
+</div>

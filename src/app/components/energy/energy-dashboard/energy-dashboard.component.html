@@ -1,0 +1,402 @@
+<div style="padding-bottom: 15px;">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-auto">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Tower A</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Tower A</a>
+              <a class="dropdown-item">Tower B</a>
+              <a class="dropdown-item">Tower C</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto pl-0">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Floor 1</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Floor 1</a>
+              <a class="dropdown-item">Floor 2</a>
+              <a class="dropdown-item">Floor 3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto text-right">
+      <div class="row">
+        <div class="col-auto">
+          <button type="button" class="btn btn-color-active">kwh</button>
+        </div>
+        <div class="col-auto pl-0">
+          <button type="button" class="btn btn-color">THB</button>
+        </div>
+        <div class="col-auto pl-0">
+          <button type="button" class="btn btn-color">kg co2</button>
+        </div>
+        <div class="col-auto pl-0">
+          <input type="text" class="form-control input-color" placeholder="ค้นหา">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW GRID 4 CARD -->
+  <div class="row row-margin" style="margin-top: 30px;">
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon">
+                  <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Total Energy Usage</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="row text-right">
+              <div class="col p-0">
+                <img class="arrow-icon" src="../../assets/img/ArrowUp.svg">
+              </div>
+              <div class="col-auto pl-2">
+                <p class="color-red mb-0">13.04 %</p>
+              </div>
+            </div>
+            <p class="color-white mb-0">Previous month</p>
+          </div>
+        </div>
+        <!-- ROW 2 -->
+        <div class="row align-items-end" style="margin-top: 32px;">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <p class="color-white mb-0">1,252,770</p>
+              </div>
+              <div class="col-auto">
+                <p class="color-white mb-0">1,108,258</p>
+              </div>
+            </div>
+            <p class="color-white mb-0">2022/02/01 - Today</p>
+          </div>
+          <div class="col-auto">
+            <canvas id="totalEnergyUseChart" style="max-width: 150px; opacity: 25%;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon">
+                  <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">On-peak</p>
+                <p class="color-white mb-0 text-low">Time of Use Rate : TOU</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="row text-right">
+              <div class="col p-0">
+                <img class="arrow-icon" src="../../assets/img/ArrowUp.svg">
+              </div>
+              <div class="col-auto pl-2">
+                <p class="color-red mb-0">10.85 %</p>
+              </div>
+            </div>
+            <p class="color-white mb-0 text-low">Previous month</p>
+          </div>
+        </div>
+        <!-- ROW 2 -->
+        <div class="row align-items-end" style="margin-top: 32px;">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <p class="color-white mb-0">565,750</p>
+              </div>
+              <div class="col-auto">
+                <p class="color-white mb-0">510,390</p>
+              </div>
+            </div>
+            <p class="color-white mb-0">At 09.00 - 22.00</p>
+          </div>
+          <div class="col-auto">
+            <canvas id="onPeakChart" style="max-width: 150px; opacity: 25%;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon">
+                  <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Off-peak</p>
+                <p class="color-white mb-0 text-low">Time of Use Rate : TOU</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="row text-right">
+              <div class="col p-0">
+                <img class="arrow-icon" src="../../assets/img/ArrowUp.svg">
+              </div>
+              <div class="col-auto pl-2">
+                <p class="color-red mb-0">20.85 %</p>
+              </div>
+            </div>
+            <p class="color-white mb-0 text-low">Previous month</p>
+          </div>
+        </div>
+        <!-- ROW 2 -->
+        <div class="row align-items-end" style="margin-top: 32px;">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <p class="color-white mb-0">687,019</p>
+              </div>
+              <div class="col-auto">
+                <p class="color-white mb-0">597,867</p>
+              </div>
+            </div>
+            <p class="color-white mb-0">At 22.00 - 09.00</p>
+          </div>
+          <div class="col-auto">
+            <canvas id="offPeakChart" style="max-width: 150px; opacity: 25%;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- ROW 1 TOP -->
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon">
+                  <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Peak-Demand</p>
+                <p class="color-white mb-0 text-low">Time of Use Rate : TOU</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="row text-right">
+              <div class="col p-0">
+                <img class="arrow-icon" src="../../assets/img/ArrowDown.svg">
+              </div>
+              <div class="col-auto pl-2">
+                <p class="color-green mb-0">20.85 %</p>
+              </div>
+            </div>
+            <p class="color-white mb-0 text-low">Previous month</p>
+          </div>
+        </div>
+        <!-- ROW 2 -->
+        <div class="row align-items-end" style="margin-top: 32px;">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <p class="color-white mb-0">14,507</p>
+              </div>
+              <div class="col-auto">
+                <p class="color-white mb-0">18,329</p>
+              </div>
+            </div>
+            <p class="color-white mb-0">2022-01-13 15:52</p>
+          </div>
+          <div class="col-auto">
+            <canvas id="peakDemand" style="max-width: 150px; opacity: 25%;"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!-- END ROW GRID 4 CARD -->
+
+  <!-- ROW GRID 3 CARD -->
+  <div class="row row-margin" style="margin-top: 16px;">
+    <div class="col-12 col-md-12 col-lg-4 col-padding tablet-mt-8 phone-mt-8">
+      <!-- CARD LEFT -->
+      <!-- CARD ENERGY DISTRIBUTION -->
+      <div class="card-border-25">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon">
+                  <i class="fa fa-percent fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Energy Distribution</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-bars fa-lg color-white" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div style="padding: 64px 16px 16px 16px;">
+          <canvas id="energyDisChart"></canvas>
+        </div>
+      </div>
+      <!-- END ENERGY DISTRIBUTION -->
+      <!-- CARD PREVIOUS ELECTRICITY -->
+      <div class="card-border-25" style="margin-top: 16px;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon">
+                  <i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Previous Electricity</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-bars fa-lg color-white" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div style="padding: 64px 16px 16px 16px;">
+          <canvas id="preElecChart"></canvas>
+        </div>
+      </div>
+      <!-- END ENERGY DISTRIBUTION -->
+      <!-- END CARD LEFT -->
+    </div>
+    <div class="col-12 col-md-12 col-lg-8 col-padding tablet-mt-8 phone-mt-8">
+      <!-- CARD ENERGY USAGE SUMMARY -->
+      <div class="card-border-25" style="height: 100%;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon">
+                  <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Energy Usage Summary</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-bars fa-lg color-white" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <!-- ROW BUTTON -->
+        <div class="row row-margin"  style="margin-top: 60px; background-color: #FFF; border-radius: 10px;">
+          <!-- BUTTON 1 -->
+          <div class="col col-padding" style="padding-top: 10px; padding-bottom: 10px; background-color: #5B78FA; border-radius: 10px;">
+            <div class="row row-margin" style="margin-left: 5px; margin-right: 5px;">
+              <div class="col-auto col-padding">
+                <p class="color-white mb-0">To Day</p>
+                <p class="color-white mb-0 text-low">15.19K</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-white mb-0">Yesterday</p>
+                <p class="color-white mb-0 text-low">52.55K</p>
+              </div>
+            </div>
+          </div>
+          <!-- END BUTTON 1 -->
+          <!-- BUTTON 2 -->
+          <div class="col col-padding" style="padding-top: 10px; padding-bottom: 10px;">
+            <div class="row row-margin" style="margin-left: 5px; margin-right: 5px;">
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">Week</p>
+                <p class="color-dark mb-0 text-low">308.28K</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">Previous Week</p>
+                <p class="color-dark mb-0 text-low">308.61K</p>
+              </div>
+            </div>
+          </div>
+          <!-- END BUTTON 2 -->
+          <!-- BUTTON 3 -->
+          <div class="col col-padding" style="padding-top: 10px; padding-bottom: 10px;">
+            <div class="row row-margin" style="margin-left: 5px; margin-right: 5px;">
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">Month</p>
+                <p class="color-dark mb-0 text-low">1.25M</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">Previous Month</p>
+                <p class="color-dark mb-0 text-low">1.11M</p>
+              </div>
+            </div>
+          </div>
+          <!-- END BUTTON 3 -->
+          <!-- BUTTON 4 -->
+          <div class="col col-padding" style="padding-top: 10px; padding-bottom: 10px;">
+            <div class="row row-margin" style="margin-left: 5px; margin-right: 5px;">
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">Year</p>
+                <p class="color-dark mb-0 text-low">1.25M</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">Previous Year</p>
+                <p class="color-dark mb-0 text-low">8.27M</p>
+              </div>
+            </div>
+          </div>
+          <!-- END BUTTON 4 -->
+        </div>
+        <!-- END ROW BUTTON -->
+        <div style="padding: 64px 16px 16px 16px;">
+          <canvas id="energyUseSumChart"></canvas>
+        </div>
+      </div>
+      <!-- END CARD ENERGY USAGE SUMMARY -->
+    </div>
+  </div> 
+  <!-- END ROW GRID 3 CARD -->
+</div> 

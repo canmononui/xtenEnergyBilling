@@ -1,0 +1,49 @@
+<div class="sidebar background-color-dark border-radius-15">
+  <!-- BTN SIDEBAR ARROW RIGHT -->
+  <button type="button" class="btn btn-sidebar-arrow-right">
+    <img class="sidebar-arrow-right" src="../../assets/img/SidebarArrowRight.svg">
+  </button>
+  <!-- END BTN SIDEBAR ARROW RIGHT -->
+
+  <!-- ROW BUTTON -->
+  <div style="margin-top: 100px;">
+    <!-- BTN DASHBOARD -->
+    <!-- <div style="background-color: #FFFFFF; border-radius: 7px; opacity: 40%; padding: 7px; width: fit-content;"> -->
+    <div [routerLink]="['/energy-dashboard']"> 
+      <div type="button" class="btn sidebar-icon">
+        <i class="fa fa-pie-chart fa-lg color-white" style="margin-left: -3px;" aria-hidden="true"></i>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!-- END BTN DASHBOARD -->
+    <!-- BTN POWER QUALITY -->
+    <div [routerLink]="['/energy-power-quality']" style="margin-top: 30px;">
+      <div type="button" class="btn sidebar-icon">
+        <i class="fa fa-bolt fa-lg color-white" style="margin-left: 3px;" aria-hidden="true"></i>
+      </div>
+    </div>
+    <!-- END BTN POWER QUALITY -->
+    <!-- BTN EXPLORE -->
+    <div [routerLink]="['/energy-explore']" style="margin-top: 30px;">
+      <div type="button" class="btn sidebar-icon">
+        <i class="fa fa-search fa-lg color-white" style="margin-left: -3px;" aria-hidden="true"></i>
+      </div>
+    </div>
+    <!-- END BTN EXPLORE -->
+    <!-- BTN REPORT -->
+    <div [routerLink]="['/energy-report']" style="margin-top: 30px;">
+      <div type="button" class="btn sidebar-icon">
+        <i class="fa fa-area-chart fa-lg color-white" style="margin-left: -4px;" aria-hidden="true"></i>
+      </div></div>
+    <!-- END BTN REPORT -->
+    <!-- BTN SETTING -->
+    <div [routerLink]="['/energy-setting-group-sensor']" style="margin-top: 30px;">
+      <div type="button" class="btn sidebar-icon">
+        <i class="fa fa-wrench fa-lg color-white" style="margin-left: -2px;" aria-hidden="true"></i>
+      </div>
+    </div>
+    <!-- END BTN SETTING -->
+  </div>
+  <!-- END ROW BUTTON -->
+  <img class="xten-logo" style="position: absolute; bottom: 45px; left: 34px;" src="../../assets/img/x-logo.svg">
+</div>

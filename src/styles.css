@@ -1,1 +1,181 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Kanit', sans-serif;
+  /* height:100%; */
+  background-color: #171722;
+ }
+
+.color-white {
+  color: #FFFFFF;
+}
+
+.color-green {
+  color: #79D2DE;
+}
+
+.color-blue {
+  color: #5B78FA;
+}
+
+.color-red {
+  color: #EC6666;
+}
+
+.color-dark {
+  color: #20232A;
+}
+
+.border-radius-15 {
+  border-radius: 15px;
+}
+
+.top-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #FFF; 
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.dropdown-color {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #5B78FA; 
+  border-radius: 10px; 
+  border: none;
+}
+
+.dropdown-white {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #FFFFFF; 
+  border: 2px solid #E7EDF4;;
+  border-radius: 10px; 
+  border: none;
+}
+
+.btn-color {
+  color: #171722;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #FFF; 
+  border-radius: 10px; 
+  border: none; 
+}
+
+.btn-color:hover {
+  color: #171722;
+}
+
+.btn-color-active {
+  color: #FFF;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #5B78FA; 
+  border-radius: 10px; 
+  border: none; 
+}
+
+.btn-color-active:hover {
+  color: #FFF;
+}
+
+.dropdown-icon {
+  margin-top: -5px; 
+  width: 17px;
+}
+
+.arrow-icon {
+  width: 13px;
+}
+
+.btn-secondary:hover {
+  color: #FFF; 
+  background-color: #5B78FA;
+}
+
+.dropdown-item:active {
+  color: #FFF; 
+  background-color: #5B78FA;
+}
+
+.input-color {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px; 
+  border: none; 
+}
+
+.noHover{
+  pointer-events: none;
+}
+
+.card-border-25 {
+  border-radius: 25px; 
+  background-color: #2C2C35; 
+  padding: 30px;
+}
+
+.card-border-1-25 {
+  border: 2px solid #808080;
+  border-radius: 25px; 
+  background-color: #2C2C35; 
+  padding: 30px;
+}
+
+.text-low {
+  margin-top: 5px; 
+  font-size: 0.8rem;
+}
+
+.row-margin {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.col-padding {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.btn-cancel {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 100px;
+  color: #FFF;
+  background-color: #2C2C35;
+}
+
+.btn-submit {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 100px;
+  color: #FFF;
+  background-color: #5B78FA;
+}
+
+.component-loading {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+/* MEDIUM DEVICES (TABLETS, 768PX AND UP) */
+@media only screen and (max-width: 768px) {
+  .tablet-mt-8 {
+    margin-top: 16px;
+  }
+}
+/* END MEDIUM DEVICES (TABLETS, 768PX AND UP) */
+
+/* SMALL DEVICES (LANDSCAPE PHONES, 576PX AND UP) */
+@media only screen and (max-width: 480px) {
+  .phone-mt-8 {
+    margin-top: 16px;
+  }
+}
+/* END SMALL DEVICES (LANDSCAPE PHONES, 576PX AND UP) */
+
+

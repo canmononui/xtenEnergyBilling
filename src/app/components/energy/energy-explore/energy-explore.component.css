@@ -1,0 +1,54 @@
+.modal-sidebar {
+  background-color: #2C2C35;
+  border-radius: 15px;
+  padding: 15px;
+  position: fixed;
+  top: 145px;
+  bottom: 15px;
+  right: 15px;
+  width: 350px;
+}
+
+.btn-sidebar-x {
+  width: 40px;
+  height: 40px;
+  padding: 2px 12px;
+  border-radius: 35px;
+  text-align: center;
+  background-color: #5B78FA;
+}
+
+.sidebar-arrow-right {
+  height: 16px;
+  margin-top: -5px;
+}
+
+.xten-logo {
+  width: 180px;
+}
+
+.sidebar-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #5B78FA; 
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+  .modal-privacy {
+    bottom: 15px;
+    left: 15px;
+    max-width: 50%;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (max-width: 480px) {
+  .modal-privacy {
+    bottom: 15px;
+    left: 15px;
+    max-width: 80%;
+  }
+}

@@ -1,0 +1,58 @@
+<div style="padding-bottom: 15px;">
+  <div class="card-border-25" style="height: 100%; margin-top: 30px;">
+    <!-- ROW 1 TOP -->
+    <div class="row">
+      <div class="col-auto">
+        <div class="top-icon">
+          <i class="fa fa-bolt fa-lg" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="col p-0 align-self-center">
+        <p class="color-white mb-0">All power meter monitering</p>
+      </div>
+    </div>
+    <!-- END ROW 1 TOP -->
+
+    <!-- LOADING -->
+    <div *ngIf="valueAllMeter == undefined">
+      <app-loading></app-loading>
+    </div>
+    <!-- END LOADING -->
+
+    <!-- ROW 2 TABLE -->
+    <table *ngIf="valueAllMeter != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+      <thead>
+        <tr>
+          <th scope="col">Meter address</th>
+          <th scope="col">Name</th>
+          <th scope="col">DATETIME</th>
+          <th scope="col">KWH</th>
+          <th scope="col">KVARH</th>
+          <th scope="col">TAP</th>
+          <th scope="col">PF</th>
+          <th scope="col">FREQ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of valueAllMeter">
+          <td *ngIf="data.sensor_id == null">N/A</td>
+          <td *ngIf="data.sensor_id != null">{{ data.sensor_id }}</td>
+          <td>MET/TFM 003</td>
+          <td *ngIf="data.time == null">N/A</td>
+          <td *ngIf="data.time != null">{{ data.time | date: 'MMM d, y, h:mm:ss a' }}</td>
+          <td *ngIf="data.kwh == null">N/A</td>
+          <td *ngIf="data.kwh != null">{{ data.kwh }}</td>
+          <td *ngIf="data.kwh == null">N/A</td>
+          <td *ngIf="data.kwh != null">{{ data.kwh }}</td>
+          <td *ngIf="data.tap == null">N/A</td>
+          <td *ngIf="data.tap != null">{{ data.tap }}</td>
+          <td *ngIf="data.pf == null">N/A</td>
+          <td *ngIf="data.pf != null">{{ data.pf }}</td>
+          <td *ngIf="data.freq == null">N/A</td>
+          <td *ngIf="data.freq != null">{{ data.freq }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- END ROW 2 TABLE -->
+  </div>
+</div>

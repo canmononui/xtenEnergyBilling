@@ -1,0 +1,45 @@
+.sidebar {
+  height: 100%;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.background-color-dark {
+  background-color: #2C2C35;
+}
+
+.xten-logo {
+  width: 35px;
+}
+
+.btn-sidebar-arrow-right {
+  width: 40px;
+  height: 40px;
+  padding: 0px 16px;
+  border-radius: 35px;
+  text-align: center;
+  background-color: #5B78FA;
+}
+
+.sidebar-arrow-right {
+  height: 18px;
+  margin-top: -5px;
+}
+
+.sidebar-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #5B78FA; 
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 8px;
+}
+
+/* .sidebar-icon-active {
+  width: 40px;
+  height: 40px;
+  background-color: #5B78FA; 
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 8px;
+} */
