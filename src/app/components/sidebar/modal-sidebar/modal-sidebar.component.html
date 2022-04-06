@@ -1,4 +1,4 @@
-<div class="modal-sidebar">
+<!-- <div class="modal-sidebar">
   <div class="text-right">
     <button type="button" class="btn btn-sidebar-x">
       <img class="sidebar-arrow-right" src="../../assets/img/XIcon.svg">
@@ -63,4 +63,122 @@
   </div>
 </div>
   <img class="xten-logo" style="position: absolute; bottom: 60px; left: 85px;" src="../../assets/img/logo-Transparent-color.svg">
+</div> -->
+
+
+<!-- MODAL MODULE MENU -->
+<div class="modal" id="modalSidebar" tabindex="-1" role="dialog" aria-labelledby="modalSidebarTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-sidebar modal-dialog-centered" role="document">
+    <div class="modal-content-sidebar">
+      <div style="border-radius: 15px; background-color: #2C2C35; height: 100%;">
+        <div class="m-4">
+          <!-- X ICON (CLOSE MODAL) -->
+          <div class="row row-margin">
+            <div class="col col-padding text-right">
+              <button type="button" data-dismiss="modal" (click)="onClickSettingHide()" class="btn btn-sidebar-x">
+                <img class="sidebar-arrow-right" src="../../assets/img/XIcon.svg">
+              </button>
+            </div>
+          </div>
+          <!-- CUSTOMER LOGO -->
+          <div class="text-center" style="margin-top: 50px;">
+            <img class="customer-icon" src="../../assets/img/semoSite.png">
+          </div>
+          <!-- SIDEBAR MENU LIST -->
+          <div style="margin-top: 50px;">
+            <!-- DASHBOARD MENU -->
+            <div class="row" style="cursor: pointer;" (click)="onClickSettingHide()" [routerLink]="['/energy-dashboard']" [class.margin-top-30]="path.energyDashboard == false" [class.sidebar-menu-active]="path.energyDashboard == true" data-dismiss="modal">
+              <div class="col-auto">
+                <div class="top-icon sidebar-icon">
+                  <i class="fa fa-pie-chart fa-lg color-white" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col pl-0 align-self-center">
+                <p class="color-white font-weight-bold mb-0">Dashboard</p>
+              </div>
+            </div>
+            <!-- POWER QUALITY MENU -->
+            <div class="row" style="cursor: pointer;" (click)="onClickSettingHide()" [routerLink]="['/energy-power-quality']" [class.margin-top-30]="path.energyPowerQuality == false || path.energyPowerQualityAllMeter == false" [class.sidebar-menu-active]="path.energyPowerQuality == true || path.energyPowerQualityAllMeter == true" data-dismiss="modal">
+              <div class="col-auto">
+                <div class="top-icon sidebar-icon">
+                  <i class="fa fa-bolt fa-lg color-white" style="margin-left: 3px;" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col pl-0 align-self-center">
+                <p class="color-white font-weight-bold mb-0">Power Quality</p>
+              </div>
+            </div>
+            <!-- EXPLORE MENU -->
+            <div class="row" style="cursor: pointer;" (click)="onClickSettingHide()" [routerLink]="['/energy-explore']" [class.margin-top-30]="path.energyExplore == false" [class.sidebar-menu-active]="path.energyExplore == true" data-dismiss="modal">
+              <div class="col-auto">
+                <div class="top-icon sidebar-icon">
+                  <i class="fa fa-search fa-lg color-white" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col pl-0 align-self-center">
+                <p class="color-white font-weight-bold mb-0">Explore</p>
+              </div>
+            </div>
+            <!-- REPORT MENU -->
+            <div class="row" style="cursor: pointer;" (click)="onClickSettingHide()" [routerLink]="['/energy-report']" [class.margin-top-30]="path.energyReport == false" [class.sidebar-menu-active]="path.energyReport == true" data-dismiss="modal">
+              <div class="col-auto">
+                <div class="top-icon sidebar-icon">
+                  <i class="fa fa-area-chart fa-lg color-white" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col pl-0 align-self-center">
+                <p class="color-white font-weight-bold mb-0">Report</p>
+              </div>
+            </div>
+            <!-- SETTING MENU -->
+            <div class="row" style="cursor: pointer;" (click)="onClickSetting()" [class.margin-top-30]="path.energySettingGroupSensor == false || path.energySettingNotification == false" [class.sidebar-menu-active]="path.energySettingGroupSensor == true || path.energySettingNotification == true">
+              <div class="col-auto">
+                <div class="top-icon sidebar-icon">
+                  <i class="fa fa-wrench fa-lg color-white" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col pl-0 align-self-center">
+                <p class="color-white font-weight-bold mb-0">Setting</p>
+              </div>
+              <div class="col-auto pl-0 justify-content-center align-self-center">
+                <img [class.setting-dropdown-rotate]="settingMenuShow || path.energySettingGroupSensor || path.energySettingNotification" class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+              </div>
+            </div>
+            <div class="text-sidebar-list" *ngIf="settingMenuShow || path.energySettingGroupSensor || path.energySettingNotification">
+              <p data-dismiss="modal" [routerLink]="['/energy-setting-group-sensor']" class="color-white font-weight-bold text-sidebar-menu">Group sensor</p>
+              <p data-dismiss="modal" [routerLink]="['/energy-setting-notification']" class="color-white font-weight-bold text-sidebar-menu">Notification</p>
+            </div>
+            <!-- <div class="row row-margin">
+              <div class="col col-padding">
+                <p class="">Group sensor</p>
+              </div>
+            </div> -->
+            <!-- <div class="dropdown" style="margin-top: 30px;">
+              <button class="btn btn-secondary p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="row m-0">
+                  <div class="col-auto p-0">
+                    <div class="top-icon sidebar-icon">
+                      <i class="fa fa-wrench fa-lg color-white" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <div class="col justify-content-center align-self-center">
+                    <p class="mb-0">Setting</p>
+                  </div>
+                  <div class="col-auto pl-0 justify-content-center align-self-center">
+                    <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                  </div>
+                </div>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item">Group sensor</a>
+                <a class="dropdown-item">Nptification</a>=
+              </div>
+            </div> -->
+          </div>
+          <!-- XTEN LOGO -->
+          <img class="xten-logo" src="../../assets/img/logo-Transparent-color.svg">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,53 @@
+<!-- MODAL REPORT PRINT -->
+<div class="modal fade" id="modalSettingGroupSensor" tabindex="-1" role="dialog" aria-labelledby="modalSettingGroupSensorTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="border-radius: 15px;">
+      <div class="m-4">
+        <div class="text-center mb-4">
+          <h5 style="margin-top: 32px;">Create Group</h5>
+        </div>
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Group Name</label>
+            <input type="text" class="form-control" id="groupNameInput" placeholder="Group Name">
+          </div>
+          <div class="form-group">
+            <label for="sensorIdSelect">Sensor ID</label>
+            <!-- TAG SENSOR -->
+            <div class="row row-margin">
+              <div *ngFor="let data of SensorIdInGroup; let i = index;" class="col-auto col-padding">
+                <!-- TAG SENSOR -->
+                  <div class="tag mb-2">
+                    <div class="row row-margin">
+                      <div class="col-auto col-padding">
+                        <p class="color-white mb-0">{{ data }}</p>
+                      </div>
+                      <div (click)="onClickPopOption(i, data)" class="col-auto col-padding pl-2" style="cursor: pointer;">
+                        <img class="sidebar-arrow-right" src="../../assets/img/XIcon.svg">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <select multiple class="form-control" id="sensorIdSelect">
+              <option (click)="onClickSelectOption('Sensor 1')">Sensor 1</option>
+              <option (click)="onClickSelectOption('Sensor 2')">Sensor 2</option>
+              <option (click)="onClickSelectOption('Sensor 3')">Sensor 3</option>
+              <option (click)="onClickSelectOption('Sensor 4')">Sensor 4</option>
+              <option (click)="onClickSelectOption('Sensor 5')">Sensor 5</option>
+            </select>
+          </div>
+        </form>
+        <!-- ROW BUTTON -->
+        <div class="row row-margin" style="margin-top: 64px; margin-bottom: 32px; margin-left: 32px; margin-right: 32px;">
+          <div class="col col-padding">
+            <button type="button" class="btn btn-cancel" data-dismiss="modal">ยกเลิก</button>
+          </div>
+          <div class="col col-padding">
+            <button type="button" class="btn btn-submit" data-dismiss="modal">ตกลง</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

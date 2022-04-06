@@ -1,0 +1,196 @@
+<div style="padding-bottom: 15px;">
+  <!-- <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-auto">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Tower A</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Tower A</a>
+              <a class="dropdown-item">Tower B</a>
+              <a class="dropdown-item">Tower C</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto pl-0">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Floor 1</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Floor 1</a>
+              <a class="dropdown-item">Floor 2</a>
+              <a class="dropdown-item">Floor 3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto text-right">
+      <input type="text" class="form-control input-color" placeholder="ค้นหา">
+    </div>
+  </div> -->
+
+  <div class="row row-margin" style="margin-top: 16px;">
+    <div class="col-4 col-padding">
+      <img src="assets/img/Weather.svg" style="width: 100%; border-radius: 10px;">
+    </div> 
+    <div class="col-8 col-padding ">
+      <div class="card-border-25" style="height: 100%;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon" style="background-color: #3F54D1; color: #FFF;">
+                  <i class="fa fa-map-pin fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Map Factory</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-auto align-self-center">
+            <div style="margin: 32px;">
+              <img src="../../assets/img/factory.svg" style="max-width: 550px">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <!-- ROW GRID 4 CARD -->
+  <div class="row row-margin" style="margin-top: 15px;">
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon" style="background-color: #3F54D1; color: #FFF;">
+                  <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">Temperature/Humidity</p>
+                <p class="color-white mb-0 text-low">Healthy</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto align-self-center">
+            <h3 class="color-white mb-0">21.5 C</h3>
+            <h3 class="color-white mb-0">69 %</h3>
+          </div>
+        </div>
+        <div style="margin-top: 32px;">
+          <canvas id="heatChart"></canvas>
+        </div>
+        <!-- <div class="row row-margin">
+          <div class="col-auto col-padding">
+            <div class="top-icon" style="background-color: #3F54D1; color: #FFF;">
+              <i class="fa fa-thermometer-empty fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col col-padding text-right align-self-center">
+            <p class="color-white mb-0">Healthy</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon" style="background-color: #55E4BB; color: #FFF;">
+                  <i class="fa fa-meh-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">PM 2.5</p>
+                <p class="color-white mb-0 text-low">Acceptable</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto align-self-center">
+            <h3 class="color-white mb-0">20 PM</h3>
+          </div>
+        </div>
+        <div style="margin-top: 32px;">
+          <canvas id="pmChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon" style="background-color: #55E4BB; color: #FFF;">
+                  <i class="fa fa-meh-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">CO2</p>
+                <p class="color-white mb-0 text-low">Acceptable</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto align-self-center">
+            <h3 class="color-white mb-0">300 CO2</h3>
+          </div>
+        </div>
+        <div style="margin-top: 32px;">
+          <canvas id="coChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+      <div class="card-border-25" style="height: 100%;">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-auto">
+                <div class="top-icon" style="background-color: #3F54D1; color: #FFF;">
+                  <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col p-0 align-self-center">
+                <p class="color-white mb-0">TVOC</p>
+                <p class="color-white mb-0 text-low">Healthy</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto align-self-center">
+            <h3 class="color-white mb-0">0.35 TVOC</h3>
+          </div>
+        </div>
+        <div style="margin-top: 32px;">
+          <canvas id="tvocChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!-- END ROW GRID 4 CARD -->
+</div>

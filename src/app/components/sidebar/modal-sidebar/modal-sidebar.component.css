@@ -1,3 +1,41 @@
+/* .modal-sidebar {
+  background-color: #2C2C35;
+  border-radius: 15px;
+  padding: 15px;
+  position: fixed;
+  top: 15px;
+  bottom: 15px;
+  left: 15px;
+  width: 350px;
+}
+
+.btn-sidebar-x {
+  width: 40px;
+  height: 40px;
+  padding: 2px 12px;
+  border-radius: 35px;
+  text-align: center;
+  background-color: #5B78FA;
+}
+
+.sidebar-arrow-right {
+  height: 16px;
+  margin-top: -5px;
+}
+
+.xten-logo {
+  width: 180px;
+}
+
+.sidebar-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #5B78FA; 
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 8px;
+} */
+
 .modal-sidebar {
   background-color: #2C2C35;
   border-radius: 15px;
@@ -34,6 +72,82 @@
   border-radius: 5px;
   text-align: center;
   padding-top: 8px;
+}
+
+.modal-dialog-sidebar {
+  margin-left: 0px; 
+  margin-top: 0px; 
+  margin-bottom: 0px; 
+  max-width: 350px; 
+  height: 100vh;
+}
+
+.modal-content-sidebar {
+  padding-left: 15px; 
+  padding-top: 15px; 
+  padding-bottom: 15px; 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  pointer-events: auto;
+  background-color: none;
+  background-clip: padding-box;
+  border: none;
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.customer-icon {
+  max-width: 180px;
+}
+
+.xten-logo {
+  position: absolute; 
+  bottom: 60px; 
+  left: 85px;
+}
+
+.setting-dropdown-rotate {
+  transform: rotate(90deg);
+}
+
+.text-sidebar-list {
+  margin-top: 24px; 
+  margin-left: 55px;
+}
+
+.text-sidebar-menu {
+  color: #FFF;
+  cursor: pointer;
+  opacity: 100%;
+}
+
+.text-sidebar-menu:hover {
+  opacity: 70%;
+}
+
+.sidebar-menu-active {
+  background-color: rgba(255, 255, 255, .4); 
+  border-radius: 7px;
+  margin-top: 23px; 
+  margin-left: -8px; 
+  margin-right: -8px; 
+  padding-top: 8px; 
+  padding-bottom: 8px;
+}
+
+.sidebar-menu-active .col-auto {
+  padding-left: 8px;
+}
+
+.sidebar-menu-active .col {
+  padding-right: 8px;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
 }
 
 @media only screen and (max-width: 768px) {

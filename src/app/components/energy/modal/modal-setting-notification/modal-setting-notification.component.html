@@ -1,0 +1,243 @@
+<!-- MODAL REPORT PRINT -->
+<div class="modal fade" id="modalSettingNotification" tabindex="-1" role="dialog" aria-labelledby="modalSettingNotificationTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="border-radius: 15px;">
+      <div class="m-4">
+        <div class="mb-4">
+          <!-- TOP -->
+          <div class="text-center">
+            <h5 style="margin-top: 32px;">Create Notification</h5>
+          </div>
+          <!-- ROW 1 -->
+          <p class="color-dark font-weight-bold mt-2 mb-0">Sensor / Group</p>
+          <div class="row row-margin mt-2">
+            <div class="col-auto col-padding">
+              <!-- RADIO CHECK BOX -->
+              <p class="color-dark mb-1">Choose Type:</p>
+              <div class="row row-margin">
+                <div class="col-auto col-padding">
+                  <div class="form-check" (click)="onClickRadioCheck(1)">
+                    <input class="form-check-input" type="radio" name="typeRadios" id="sensorRadios" value="option1" checked>
+                    <label class="form-check-label" for="sensorRadios">
+                      Sensor
+                    </label>
+                  </div>
+                </div>
+                <div class="col-auto col-padding">
+                  <div class="form-check" (click)="onClickRadioCheck(2)">
+                    <input class="form-check-input" type="radio" name="typeRadios" id="groupRadios" value="option2">
+                    <label class="form-check-label" for="groupRadios">
+                      Group
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto col-padding pl-4">
+              <!-- DROPDOWN GROUP -->
+              <p class="color-dark mb-1">{{ radioCheckText }}:</p>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="row">
+                    <div class="col-auto">
+                      <p class="mb-0">{{ dropdownSGOptionSelect }}</p>
+                    </div>
+                    <div class="col-auto pl-0 justify-content-center align-self-center">
+                      <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                    </div>
+                  </div>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <div *ngFor="let data of dropdownSGOption;">
+                    <div (click)="onClickDropdownSGOption(data)" class="dropdown-item">
+                    <a>{{ data }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ROW 2 -->
+          <p class="color-dark font-weight-bold mt-2 mb-0">Duration</p>
+          <div class="row row-margin mt-2">
+            <div class="col-12 col-padding">
+              <!-- RADIO CHECK BOX -->
+              <p class="color-dark mb-1">Choose Days:</p>
+              <div class="row row-margin">
+                <div class="col col-padding">
+                  <div class="day text-center" type="button" [class.day-active]="day[0] == 1" (click)="onClickSelecDay(0)">
+                    <p class="mb-0">Sun</p>
+                  </div>
+                </div>
+                <div class="col col-padding">
+                  <div class="day text-center" type="button" [class.day-active]="day[1] == 1" (click)="onClickSelecDay(1)">
+                    <p class="mb-0">Mon</p>
+                  </div>
+                </div>
+                <div class="col col-padding">
+                  <div class="day text-center" type="button" [class.day-active]="day[2] == 1" (click)="onClickSelecDay(2)">
+                    <p class="mb-0">Tue</p>
+                  </div>
+                </div>
+                <div class="col col-padding">
+                  <div class="day text-center" type="button" [class.day-active]="day[3] == 1" (click)="onClickSelecDay(3)">
+                    <p class="mb-0">Wed</p>
+                  </div>
+                </div>
+                <div class="col col-padding">
+                  <div class="day text-center" type="button" [class.day-active]="day[4] == 1" (click)="onClickSelecDay(4)">
+                    <p class="mb-0">Thu</p>
+                  </div>
+                </div>
+                <div class="col col-padding">
+                  <div class="day text-center" type="button" [class.day-active]="day[5] == 1" (click)="onClickSelecDay(5)">
+                    <p class="mb-0">Fri</p>
+                  </div>
+                </div>
+                <div class="col-auto col-padding">
+                  <div class="day text-center" type="button" [class.day-active]="day[6] == 1" (click)="onClickSelecDay(6)">
+                    <p class="mb-0">Sat</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-padding mt-1">
+              <!-- DROPDOWN GROUP -->
+              <p class="color-dark mb-1">Start - End Time:</p>
+              <div class="row row-margin">
+                <!-- START TIME -->
+                <div class="col-auto col-padding">
+                  <input class="form-control" style="width: 50px;"
+                  maxlength="2" type="text" oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
+                </div>
+                <div class="col-auto col-padding align-self-center">
+                  <p class="mb-0 text-dark">:</p>
+                </div>
+                <div class="col-auto col-padding">
+                  <input class="form-control" style="width: 50px;"
+                  maxlength="2" type="text" oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
+                </div>
+                <div class="col-auto col-padding align-self-center">
+                  <p class="mb-0 text-dark">-</p>
+                </div>
+                <!-- END TIME -->
+                <div class="col-auto col-padding">
+                  <input class="form-control" style="width: 50px;"
+                  maxlength="2" type="text" oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
+                </div>
+                <div class="col-auto col-padding align-self-center">
+                  <p class="mb-0 text-dark">:</p>
+                </div>
+                <div class="col-auto col-padding">
+                  <input class="form-control" style="width: 50px;"
+                  maxlength="2" type="text" oninput="this.value=this.value.replace(/[^0-9.]/g,'');">
+                </div>
+              </div>
+            
+
+
+
+              
+
+
+              <!-- <div class="dropdown">
+                <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="row">
+                    <div class="col-auto">
+                      <p class="mb-0">{{ dropdownOptionSelect }}</p>
+                    </div>
+                    <div class="col-auto pl-0 justify-content-center align-self-center">
+                      <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                    </div>
+                  </div>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <div *ngFor="let data of dropdownOption;" class="dropdown-item">
+                    <a (click)="onClickDropdownOption(data)">{{ data }}</a>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <!-- ROW 3 -->
+          <p class="color-dark font-weight-bold mt-2 mb-0">Set Point</p>
+          <div class="row row-margin mt-2">
+            <div class="col-auto col-padding">
+              <!-- RADIO CHECK BOX -->
+              <p class="color-dark mb-1">Level:</p>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="setpointRadios" id="everytimeRadios1" value="option1" checked>
+                <label class="form-check-label" for="everytimeRadios1">
+                  Everytime
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="setpointRadios" id="onetimeRadios" value="option2">
+                <label class="form-check-label" for="onetimeRadios">
+                  One time
+                </label>
+              </div>
+            </div>
+            <div class="col-auto col-padding">
+              <!-- DROPDOWN PARAMETER -->
+              <p class="color-dark mb-1">Parameter:</p>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="row">
+                    <div class="col-auto">
+                      <p class="mb-0">{{ dropdownParameterOptionSelect }}</p>
+                    </div>
+                    <div class="col-auto pl-0 justify-content-center align-self-center">
+                      <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                    </div>
+                  </div>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <div *ngFor="let data of dropdownParameterOption;">
+                    <div (click)="onClickDropdownParameterOption(data)" class="dropdown-item">
+                      <a>{{ data }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto col-padding">
+              <!-- DROPDOWN OPERATOR -->
+              <p class="color-dark mb-1">Operator:</p>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="row">
+                    <div class="col-auto">
+                      <p class="mb-0">{{ dropdownOperatorOptionSelect }}</p>
+                    </div>
+                    <div class="col-auto pl-0 justify-content-center align-self-center">
+                      <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                    </div>
+                  </div>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <div *ngFor="let data of dropdownOperatorOption;">
+                    <div (click)="onClickDropdownOperatorOption(data)" class="dropdown-item">
+                      <a>{{ data }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <label class="mt-2" for="exampleFormControlInput1">Data Point:</label>
+            <input type="text" class="form-control" id="groupNameInput" placeholder="Set Point">
+        </div>
+        <!-- ROW BUTTON -->
+        <div class="row row-margin" style="margin-top: 64px; margin-bottom: 32px; margin-left: 32px; margin-right: 32px;">
+          <div class="col col-padding">
+            <button type="button" class="btn btn-cancel" data-dismiss="modal">ยกเลิก</button>
+          </div>
+          <div class="col col-padding">
+            <button type="button" class="btn btn-submit" data-dismiss="modal">ตกลง</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

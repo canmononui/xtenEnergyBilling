@@ -1,1 +1,75 @@
-<p>energy-setting-group-sensor works!</p>
+<app-modal-setting-group-sensor></app-modal-setting-group-sensor>
+<div style="padding-bottom: 15px;">
+  <!-- ADD NEW DROUP SENSOR -->
+  <div class="row text-right">
+    <div class="col">
+      <button type="button" data-toggle="modal" data-target="#modalSettingGroupSensor" class="btn btn-color-active">
+        <div class="row row-margin">
+          <div class="col-auto col-padding">
+            <i class="fa fa-plus-circle fa-lg color-white" aria-hidden="true"></i>
+          </div>
+          <div class="col-auto col-padding">
+            <p class="color-white mb-0">New Group</p>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+  <!-- DATA TABLE -->
+  <div class="row row-margin" style="margin-top: 30px;">
+    <div class="col col-padding">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bullseye fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Group Sensor</p>
+          </div>
+        </div>
+        <!-- END TOP -->
+
+        <!-- TABLE -->
+        <table class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Group Name</th>
+              <th scope="col">Sensor id</th>
+              <th scope="col">Create Time</th>
+              <th scope="col">Configuration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Power FL 1</td>
+              <td>Power1, Power2, Power3</td>
+              <td>2022/03/20 09:35:55</td>
+              <td>
+                <button (click)="onClickBtnNoti(1)" type="button" class="btn btn-sm btn-toggle" [class.active]="groupSensorStatus1" data-toggle="button" aria-pressed="true" autocomplete="off">
+                  <div class="handle"></div>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Energy FL 1</td>
+              <td>Energy1, Energy2</td>
+              <td>2022/04/01 16:09:34</td>
+              <td>
+                <button (click)="onClickBtnNoti(2)" type="button" class="btn btn-sm btn-toggle" [class.active]="groupSensorStatus2" data-toggle="button" aria-pressed="true" autocomplete="off">
+                  <div class="handle"></div>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END TABLE -->
+      </div>
+    </div>
+  </div>
+</div>

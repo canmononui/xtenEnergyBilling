@@ -21,8 +21,16 @@ import { NotificationListComponent } from './components/notification-list/notifi
 import { ModalReportPrintComponent } from './components/energy/modal/modal-report-print/modal-report-print.component';
 import { ModalReportSaveComponent } from './components/energy/modal/modal-report-save/modal-report-save.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { LoginComponent } from './components/login/login/login.component';
+import { ModalSettingGroupSensorComponent } from './components/energy/modal/modal-setting-group-sensor/modal-setting-group-sensor.component';
+import { ModalSettingNotificationComponent } from './components/energy/modal/modal-setting-notification/modal-setting-notification.component';
+import { EnvironmentDashboardComponent } from './components/environment/environment-dashboard/environment-dashboard.component';
+import { EnvironmentReportComponent } from './components/environment/environment-report/environment-report.component';
+import { ModalEnvironmentReportSaveComponent } from './components/environment/modal/modal-environment-report-save/modal-environment-report-save.component';
+import { ModalEnvironmentReportPrintComponent } from './components/environment/modal/modal-environment-report-print/modal-environment-report-print.component';
 // ROUTES
 export const router: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'energy-dashboard', component: EnergyDashboardComponent },
   { path: 'energy-explore', component: EnergyExploreComponent },
   { path: 'energy-power-quality', component: EnergyPowerQualityComponent },
@@ -30,6 +38,8 @@ export const router: Routes = [
   { path: 'energy-report', component: EnergyReportComponent },
   { path: 'energy-setting-group-sensor', component: EnergySettingGroupSensorComponent },
   { path: 'energy-setting-notification', component: EnergySettingNotificationComponent },
+  { path: 'environment-dashboard', component: EnvironmentDashboardComponent },
+  { path: 'environment-report', component: EnvironmentReportComponent },
 ]
 
 @NgModule({
@@ -51,6 +61,13 @@ export const router: Routes = [
     ModalReportPrintComponent,
     ModalReportSaveComponent,
     LoadingComponent,
+    LoginComponent,
+    ModalSettingGroupSensorComponent,
+    ModalSettingNotificationComponent,
+    EnvironmentDashboardComponent,
+    EnvironmentReportComponent,
+    ModalEnvironmentReportSaveComponent,
+    ModalEnvironmentReportPrintComponent,
   ],
   imports: [
     BrowserModule,

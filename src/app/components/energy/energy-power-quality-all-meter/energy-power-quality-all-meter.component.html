@@ -34,16 +34,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of valueAllMeter">
+        <tr *ngFor="let data of valueAllMeter; let i = index;">
           <td *ngIf="data.sensor_id == null">N/A</td>
-          <td *ngIf="data.sensor_id != null">{{ data.sensor_id }}</td>
-          <td>MET/TFM 003</td>
+          <td *ngIf="data.sensor_id != null">Meter address {{ data.sensor_id }}</td>
+          <td>MET/TFM 00{{i+1}}</td>
           <td *ngIf="data.time == null">N/A</td>
           <td *ngIf="data.time != null">{{ data.time | date: 'MMM d, y, h:mm:ss a' }}</td>
           <td *ngIf="data.kwh == null">N/A</td>
           <td *ngIf="data.kwh != null">{{ data.kwh }}</td>
-          <td *ngIf="data.kwh == null">N/A</td>
-          <td *ngIf="data.kwh != null">{{ data.kwh }}</td>
+          <td *ngIf="data.kvarh == null">N/A</td>
+          <td *ngIf="data.kvarh != null">{{ data.kvarh }}</td>
           <td *ngIf="data.tap == null">N/A</td>
           <td *ngIf="data.tap != null">{{ data.tap }}</td>
           <td *ngIf="data.pf == null">N/A</td>

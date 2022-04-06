@@ -17,9 +17,14 @@ export class EnergyDashboardComponent implements OnInit {
   onPeakChart: any = [];
   offPeakChart: any = [];
   peakDemand: any = [];
-  energyUseSumChart: any = [];
+  energyUseSumChartDay: any = [];
+  energyUseSumChartWeek: any = [];
+  energyUseSumChartMonth: any = [];
+  energyUseSumChartYear: any = [];
   energyDisChart: any = [];
   preElecChart: any = [];
+  type:any = 'line';
+  eusBtn:any = 1;
 
   constructor(
     private http: HttpClient,
@@ -32,7 +37,7 @@ export class EnergyDashboardComponent implements OnInit {
 
     // TOTAL ENERGY USAGE
     this.totalEnergyUseChart = new Chart('totalEnergyUseChart', { // object name = id html
-      type: 'line', 
+      type: this.type, 
       data: {
         labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
         datasets: [{
@@ -56,8 +61,6 @@ export class EnergyDashboardComponent implements OnInit {
           }],
           xAxes: [{
             display: false,
-            // barPercentage: 0.5,
-            // categoryPercentage: 1
           }]
         },
         legend: {
@@ -97,8 +100,6 @@ export class EnergyDashboardComponent implements OnInit {
           }],
           xAxes: [{
             display: false,
-            // barPercentage: 0.5,
-            // categoryPercentage: 1
           }]
         },
         legend: {
@@ -138,8 +139,6 @@ export class EnergyDashboardComponent implements OnInit {
           }],
           xAxes: [{
             display: false,
-            // barPercentage: 0.5,
-            // categoryPercentage: 1
           }]
         },
         legend: {
@@ -179,8 +178,6 @@ export class EnergyDashboardComponent implements OnInit {
           }],
           xAxes: [{
             display: false,
-            // barPercentage: 0.5,
-            // categoryPercentage: 1
           }]
         },
         legend: {
@@ -225,13 +222,22 @@ export class EnergyDashboardComponent implements OnInit {
     // PREVIOUS ELECTRICITY
     this.preElecChart = new Chart('preElecChart', { // object name = id html
       type: 'bar', 
+      // data: {
+      //   labels: ['2022', '2021', '2020'],
+      //   datasets: [{
+      //     data: [320, 490, 380],
+      //     borderWidth: 0,
+      //     backgroundColor: ['#147AD6', '#EF706F', '#83D8E3'],
+      //   }] 
+      // },
       data: {
         labels: ['2022', '2021', '2020'],
         datasets: [{
+          label: 'Previous Electricity',
           data: [320, 490, 380],
-          borderWidth: 0,
           backgroundColor: ['#147AD6', '#EF706F', '#83D8E3'],
-        }] 
+          borderWidth: 0
+        }]
       },
       options: {
         legend: {
@@ -250,23 +256,23 @@ export class EnergyDashboardComponent implements OnInit {
     })
     // END PREVIOUS ELECTRICITY
 
-    // ENERGY USAGE SUMMARY
-    this.energyUseSumChart = new Chart('energyUseSumChart', { // object name = id html
+    // ENERGY USAGE SUMMARY DAY
+    this.energyUseSumChartDay = new Chart('energyUseSumChartDay', { // object name = id html
       type: 'bar', 
       data: {
         labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
                  '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-                 '21', '22', '23', '24'],
+                 '21', '22', '23'],
         datasets: [
             {
               label: 'To Day',
-              data: [30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000],
+              data: [30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000],
               borderWidth: 0,
               backgroundColor: '#147AD6',
             },
             {
               label: 'Yesterday',
-              data: [20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000],
+              data: [20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000],
               borderWidth: 0,
               backgroundColor: '#EC6666'
             }]
@@ -283,7 +289,9 @@ export class EnergyDashboardComponent implements OnInit {
           //   categoryPercentage: 1
           // }]
           xAxes: [{
-            labels: ["2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00", "2022-03-16 20:00:00"],
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                 '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                 '21', '22', '23'],
           }]
         },
         legend: {
@@ -295,14 +303,158 @@ export class EnergyDashboardComponent implements OnInit {
           }
         },
         title: {
-          text: "Energy Usage Summary",
+          text: "Energy Usage Summary Day",
           display: false
         },
       }
     })
-    // END ENERGY USAGE SUMMARY
+    // END ENERGY USAGE SUMMARY DAY
 
+    // ENERGY USAGE SUMMARY WEEK
+    this.energyUseSumChartWeek = new Chart('energyUseSumChartWeek', { // object name = id html
+      type: 'bar', 
+      data: {
+        labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        datasets: [
+            {
+              label: 'This Week',
+              data: [45000, 55000, 45000, 40000, 50000, 20000, 25000],
+              borderWidth: 0,
+              backgroundColor: '#147AD6',
+            },
+            {
+              label: 'Last Week',
+              data: [50000, 45000, 65000, 50000, 45000, 25000, 20000],
+              borderWidth: 0,
+              backgroundColor: '#EC6666'
+            }]
+        },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          xAxes: [{
+            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          }]
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            padding: 32
+          }
+        },
+        title: {
+          text: "Energy Usage Summary Week",
+          display: false
+        },
+      }
+    })
+    // END ENERGY USAGE SUMMARY WEEK
+    
+    // ENERGY USAGE SUMMARY MONTH
+    this.energyUseSumChartMonth = new Chart('energyUseSumChartMonth', { // object name = id html
+      type: 'bar', 
+      data: {
+        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                 '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                 '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+        datasets: [
+            {
+              label: 'This Month',
+              data: [30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000],
+              borderWidth: 0,
+              backgroundColor: '#147AD6',
+            },
+            {
+              label: 'Last Month',
+              data: [20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000],
+              borderWidth: 0,
+              backgroundColor: '#EC6666'
+            }]
+        },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          xAxes: [{
+            labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+                 '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
+                 '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'],
+          }]
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            padding: 32
+          }
+        },
+        title: {
+          text: "Energy Usage Summary Month",
+          display: false
+        },
+      }
+    })
+    // END ENERGY USAGE SUMMARY MONTH
 
+    // ENERGY USAGE SUMMARY YEAR
+    this.energyUseSumChartYear = new Chart('energyUseSumChartYear', { // object name = id html
+      type: 'bar', 
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        datasets: [
+            {
+              label: 'This Year',
+              data: [55000, 60000, 30000, 50000, 55000, 25000, 55000, 60000, 30000, 50000, 55000, 25000],
+              borderWidth: 0,
+              backgroundColor: '#147AD6',
+            },
+            {
+              label: 'Last Year',
+              data: [20000, 45000, 25000, 20000, 35000, 25000, 25000, 20000, 45000, 25000, 20000, 35000],
+              borderWidth: 0,
+              backgroundColor: '#EC6666'
+            }]
+        },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }],
+          xAxes: [{
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+          }]
+        },
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: {
+            usePointStyle: true,
+            padding: 32
+          }
+        },
+        title: {
+          text: "Energy Usage Summary Year",
+          display: false
+        },
+      }
+    })
+    // END ENERGY USAGE SUMMARY YEAR
+  }
+
+  onClickEusBtn(col:any) {
+    this.eusBtn = col;
   }
 
 }

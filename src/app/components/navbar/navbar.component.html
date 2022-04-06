@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="path.login == false" class="row">
   <!-- TOP ICON TEXT -->
   <div class="col">
     <div class="row">
@@ -14,8 +14,9 @@
         <p *ngIf="path.energyPowerQualityAllMeter" class="color-white mb-0">Energy - Power Quality All Meter</p>
         <p *ngIf="path.energyReport" class="color-white mb-0">Energy - Report</p>
         <p *ngIf="path.energySettingGroupSensor" class="color-white mb-0">Energy - Setting Group Sensor</p>
-        <p *ngIf="path.energySettingNotification" class="color-white mb-0">Energy - Setting Group Notification</p>
-        <!-- <p class="color-white mb-0">Energy - Dashboard</p> -->
+        <p *ngIf="path.energySettingNotification" class="color-white mb-0">Energy - Setting Notification</p>
+        <p *ngIf="path.environmentDashboard" class="color-white mb-0">Environment - Dashboard</p>
+        <p *ngIf="path.environmentReport" class="color-white mb-0">Environment - Report</p>
       </div>
     </div>
   </div>
@@ -23,12 +24,123 @@
     <p class="color-white mb-0">Jan 25, 2022, 9:00:51 PM</p>
   </div>
   <div class="col-auto align-self-center pl-2">
-    <i class="fa fa-th fa-lg color-white" aria-hidden="true"></i>
+    <div type="button" data-toggle="modal" data-target="#modalModuleMenu">
+      <i class="fa fa-th fa-lg color-white" aria-hidden="true"></i>
+    </div>
   </div>
   <div class="col-auto align-self-center pl-2">
-    <i class="fa fa-bell fa-lg color-white" aria-hidden="true"></i>
+    <!-- <i class="fa fa-bell fa-lg color-white" aria-hidden="true"></i> -->
+    <div class="dropdown">
+      <i class="fa fa-bell fa-lg color-white" aria-hidden="true" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <span class="badge badge-pill" style="position: relative; top: -10px; right: -10px; padding: .3em .5em; margin-left: -20px; color: #FFF; background-color: #EC6666;">
+        4
+      </span>
+    <div class="dropdown-menu dropdown-menu-right" style="width: 450px; border-radius: 10px; margin-top: 15px;" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-item-noti">
+        <div class="row row-margin">
+          <!-- ICON -->
+          <div class="col-auto col-padding align-self-center">
+            <div class="justify-content-center align-self-center p-2" style="background-color: #EC6666; border-radius: 1000px;">
+              <i class="fa fa-bell fa-lg color-white" aria-hidden="true"></i>
+            </div>
+          </div>
+          <!-- DESCRIPTION -->
+          <div class="col col-padding">
+            <!-- TOP -->
+            <div class="row row-margin">
+              <div class="col col-padding">
+                <p class="color-dark mb-0">แจ้งเตือน Volt</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">2022/04/01 14:35</p>
+              </div>
+            </div>
+            <p class="color-dark mb-0">แจ้งเตือนการใช้งาน Volt ผิดปกติ</p>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-item-noti">
+        <div class="row row-margin">
+          <!-- ICON -->
+          <div class="col-auto col-padding align-self-center">
+            <div class="justify-content-center align-self-center p-2" style="background-color: #79D2DE; border-radius: 1000px;">
+              <i class="fa fa-bell fa-lg color-white" aria-hidden="true"></i>
+            </div>
+          </div>
+          <!-- DESCRIPTION -->
+          <div class="col col-padding">
+            <!-- TOP -->
+            <div class="row row-margin">
+              <div class="col col-padding">
+                <p class="color-dark mb-0">แจ้งเตือน Active Power</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">2022/04/01 10:28</p>
+              </div>
+            </div>
+            <p class="color-dark mb-0">แจ้งเตือนการใช้งาน Active Power กลับสู่สถานะปกติ</p>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-item-noti">
+        <div class="row row-margin">
+          <!-- ICON -->
+          <div class="col-auto col-padding align-self-center">
+            <div class="justify-content-center align-self-center p-2" style="background-color: #EC6666; border-radius: 1000px;">
+              <i class="fa fa-bell fa-lg color-white" aria-hidden="true"></i>
+            </div>
+          </div>
+          <!-- DESCRIPTION -->
+          <div class="col col-padding">
+            <!-- TOP -->
+            <div class="row row-margin">
+              <div class="col col-padding">
+                <p class="color-dark mb-0">แจ้งเตือน Active Power</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">2022/04/01 10:13</p>
+              </div>
+            </div>
+            <p class="color-dark mb-0">แจ้งเตือนการใช้งาน Active Power ผิดปกติ</p>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-item-noti">
+        <div class="row row-margin">
+          <!-- ICON -->
+          <div class="col-auto col-padding align-self-center">
+            <div class="justify-content-center align-self-center p-2" style="background-color: #FDBA21; border-radius: 1000px;">
+              <i class="fa fa-bell fa-lg color-white" aria-hidden="true"></i>
+            </div>
+          </div>
+          <!-- DESCRIPTION -->
+          <div class="col col-padding">
+            <!-- TOP -->
+            <div class="row row-margin">
+              <div class="col col-padding">
+                <p class="color-dark mb-0">แจ้งเตือน Sensor 3</p>
+              </div>
+              <div class="col-auto col-padding">
+                <p class="color-dark mb-0">2022/04/01 10:13</p>
+              </div>
+            </div>
+            <p class="color-dark mb-0">ไม่สามารถอ่านค่าจาก Sensor 3 ได้ โปรดตรวจสอบ</p>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown-item-noti text-center" style="cursor: pointer;">
+        <p class="color-dark mb-0">ดูเพิ่มเติม</p>
+      </div>
+    </div>
+  </div>
   </div>
   <div class="col-auto align-self-center pl-2">
-    <i class="fa fa-user-circle fa-lg color-white" aria-hidden="true"></i>
+    <div class="dropdown">
+        <i class="fa fa-user-circle fa-lg color-white" aria-hidden="true" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <div class="dropdown-menu dropdown-menu-right" style="border-radius: 10px; margin-top: 15px;" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item">ตั้งค่าบัญชี</a>
+        <a [routerLink]="['/login']" class="dropdown-item">ออกจากระบบ</a>
+      </div>
+    </div>
   </div>
 </div>

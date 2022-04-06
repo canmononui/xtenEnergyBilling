@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="286" height="203" viewBox="0 0 286 203">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_6" data-name="Rectangle 6" width="286" height="203" transform="translate(16 535)" fill="#ec7363"/>
+    </clipPath>
+  </defs>
+  <g id="Weather" transform="translate(-16 -535)">
+    <g id="Background">
+      <rect id="Rectangle_12" data-name="Rectangle 12" width="286" height="203" transform="translate(16 535)" fill="#ec7363"/>
+      <g id="Mask_Group_3" data-name="Mask Group 3" clip-path="url(#clip-path)">
+        <circle id="Ellipse_5" data-name="Ellipse 5" cx="173.5" cy="173.5" r="173.5" transform="translate(127 395)" fill="#ee895b"/>
+      </g>
+      <g id="Mask_Group_2" data-name="Mask Group 2" clip-path="url(#clip-path)">
+        <circle id="Ellipse_4" data-name="Ellipse 4" cx="106" cy="106" r="106" transform="translate(161 431)" fill="#ee9b55"/>
+      </g>
+      <g id="Mask_Group_1" data-name="Mask Group 1" clip-path="url(#clip-path)">
+        <ellipse id="Ellipse_3" data-name="Ellipse 3" cx="55.5" cy="55" rx="55.5" ry="55" transform="translate(213 481)" fill="#edc748"/>
+      </g>
+    </g>
+    <g id="Day_3" data-name="Day 3" transform="translate(184 25)">
+      <text id="_37_Rain" data-name="37° Rain" transform="translate(67 681)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-28.44" y="0">37° Rain</tspan></text>
+      <text id="_2_WED" data-name="2 WED" transform="translate(67 698)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-22.56" y="0">2 WED</tspan></text>
+      <circle id="Ellipse_7" data-name="Ellipse 7" cx="10" cy="10" r="10" transform="translate(57 645)" fill="#fff"/>
+      <text id="_" data-name="" transform="translate(67 659)" fill="#20242a" font-size="12" font-family="FontAwesome"><tspan x="-6.429" y="0"></tspan></text>
+    </g>
+    <g id="Day_2" data-name="Day 2" transform="translate(93 25)">
+      <text id="_37_Cloudy" data-name="37° Cloudy" transform="translate(67 681)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-38.392" y="0">37° Cloudy</tspan></text>
+      <text id="_1_TUE" data-name="1 TUE" transform="translate(67 698)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-18.824" y="0">1 TUE</tspan></text>
+      <circle id="Ellipse_7-2" data-name="Ellipse 7" cx="10" cy="10" r="10" transform="translate(57 645)" fill="#fff"/>
+      <text id="_2" data-name="" transform="translate(67 659)" fill="#20242a" font-size="12" font-family="FontAwesome"><tspan x="-3.429" y="0"></tspan></text>
+    </g>
+    <g id="Day_1" data-name="Day 1" transform="translate(0 25)">
+      <text id="_37_Sunny" data-name="37° Sunny" transform="translate(67 681)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-35.568" y="0">37° Sunny</tspan></text>
+      <text id="_31_MON" data-name="31 MON" transform="translate(67 698)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-25.696" y="0">31 MON</tspan></text>
+      <circle id="Ellipse_7-3" data-name="Ellipse 7" cx="10" cy="10" r="10" transform="translate(57 645)" fill="#fff"/>
+      <text id="_3" data-name="" transform="translate(67 659)" fill="#20242a" font-size="12" font-family="FontAwesome"><tspan x="-6" y="0"></tspan></text>
+    </g>
+    <text id="BANGKOK" transform="translate(252 597)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-36.416" y="0">BANGKOK</tspan></text>
+    <text id="MON_01-31" data-name="MON 01-31" transform="translate(248 580)" fill="#fff" font-size="16" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-37.296" y="0">MON 01-31</tspan></text>
+    <text id="_15:45:33" data-name="15:45:33" transform="translate(254 564)" fill="#fff" font-size="20" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-33.33" y="0">15:45:33</tspan></text>
+    <text id="_37_" data-name="37°" transform="translate(63 626)" fill="#fff" font-size="50" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-33.175" y="0">37°</tspan></text>
+    <text id="Sunny" transform="translate(89 570)" fill="#fff" font-size="20" font-family="Kanit-Medium, Kanit" font-weight="500"><tspan x="-28.99" y="0">Sunny</tspan></text>
+    <circle id="Ellipse_6" data-name="Ellipse 6" cx="12.5" cy="12.5" r="12.5" transform="translate(31 550)" fill="#fff"/>
+    <text id="_4" data-name="" transform="translate(43.5 568)" fill="#20242a" font-size="15" font-family="FontAwesome"><tspan x="-7.5" y="0"></tspan></text>
+  </g>
+</svg>

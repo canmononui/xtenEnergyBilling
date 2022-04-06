@@ -1,0 +1,12 @@
+.dropdown-item-noti {
+  display: block;
+  width: 100%;
+  padding: .75rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #20232A;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}

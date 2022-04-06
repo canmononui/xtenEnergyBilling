@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <div class="row">
-        <div class="col-auto">
+        <!-- <div class="col-auto">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="row">
@@ -18,8 +18,8 @@
               <a class="dropdown-item">Tower A</a>
             </div>
           </div>
-        </div>
-        <div class="col-auto pl-0">
+        </div> -->
+        <!-- <div class="col-auto pl-0">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="row">
@@ -33,7 +33,25 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a (click)="onSelectFloor(0, 'Floor 1')" class="dropdown-item">Floor 1</a>
-              <!-- <a (click)="onSelectFloor(1, 'Floor 2')" class="dropdown-item">Floor 2</a> -->
+            </div>
+          </div>
+        </div> -->
+        <div class="col-auto">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p *ngIf="selectOptionLocation != ''" class="mb-0">{{ selectOptionLocation }}</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <div *ngFor="let data of valueOptionLocation;" class="dropdown-item">
+                <p class="mb-0">{{ data.location }}</p>
+              </div>
             </div>
           </div>
         </div>
@@ -93,9 +111,17 @@
           <app-loading></app-loading>
         </div>
         <!-- END LOADING -->
+        
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="voltageLine2LineChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
 
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -109,35 +135,67 @@
           <tbody>
             <tr>
               <td>Va-b</td>
-              <td>{{ valueDisplay.vab }}</td>
+              <td>400</td>
               <td>Voltage</td>
               <td>±10%</td>
-              <td>-</td>
-              <td>ALIVE</td>
-            </tr>
-            <tr>
-              <td>Va-c</td>
-              <td>{{ valueDisplay.vac }}</td>
-              <td>Voltage</td>
-              <td>±10%</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.vab != undefined">{{ valueDisplay.vab }}</td>
+              <td *ngIf="valueDisplay.vab == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.vab != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.vab == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Vb-c</td>
-              <td>{{ valueDisplay.vbc }}</td>
+              <td>400</td>
               <td>Voltage</td>
               <td>±10%</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.vbc != undefined">{{ valueDisplay.vbc }}</td>
+              <td *ngIf="valueDisplay.vbc == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.vbc != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.vbc == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Vc-a</td>
+              <td>400</td>
+              <td>Voltage</td>
+              <td>±10%</td>
+              <td *ngIf="valueDisplay.vca != undefined">{{ valueDisplay.vca }}</td>
+              <td *ngIf="valueDisplay.vca == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.vca != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.vca == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Vavg</td>
-              <td>{{ valueDisplay.vavg }}</td>
+              <td>400</td>
               <td>Voltage</td>
               <td>±10%</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.vavg != undefined">{{ valueDisplay.vavg }}</td>
+              <td *ngIf="valueDisplay.vavg == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.vavg != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.vavg == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -168,8 +226,16 @@
         </div>
         <!-- END LOADING -->
 
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="unbalanceVoltageChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -183,27 +249,51 @@
           <tbody>
             <tr>
               <td>Negative-sequence voltage</td>
-              <td>{{ valueDisplay.nsv }}</td>
+              <td>400</td>
               <td>Voltage</td>
               <td>±10%</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.nsv != undefined">{{ valueDisplay.nsv }}</td>
+              <td *ngIf="valueDisplay.nsv == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.nsv != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.nsv == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Positive-sequence voltage</td>
-              <td>{{ valueDisplay.psv }}</td>
+              <td>400</td>
               <td>Voltage</td>
               <td>±10%</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.psv != undefined">{{ valueDisplay.psv }}</td>
+              <td *ngIf="valueDisplay.psv == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.psv != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.psv == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>%Unbalance voltage</td>
-              <td>{{ valueDisplay.uv }}</td>
+              <td>400</td>
               <td>Voltage</td>
               <td>±10%</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.uv != undefined">{{ valueDisplay.uv }}</td>
+              <td *ngIf="valueDisplay.uv == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.uv != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.uv == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -215,7 +305,7 @@
   <!-- END 2 CARD ROW 1 -->
 
   <!-- 2 CARD ROW 2 -->
-  <div class="row row-margin" style="margin-top: 16px;">
+  <div class="row row-margin" style="margin-top: 8px;">
     <!-- CARD 1 -->
     <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
       <div class="card-border-25" style="height: 100%;">
@@ -238,8 +328,16 @@
         </div>
         <!-- END LOADING -->
 
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="frequencyChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -253,11 +351,19 @@
           <tbody>
             <tr>
               <td>Freq</td>
-              <td>{{ valueDisplay.freq }}</td>
+              <td>50</td>
               <td>Hz</td>
               <td>±0.5</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.freq != undefined">{{ valueDisplay.freq }}</td>
+              <td *ngIf="valueDisplay.freq == undefined">-</td>
+              <td>  
+                <div *ngIf="valueDisplay.freq != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.freq == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -288,8 +394,16 @@
         </div>
         <!-- END LOADING -->
 
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="currentChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -303,43 +417,83 @@
           <tbody>
             <tr>
               <td>Ia</td>
-              <td>{{ valueDisplay.ia }}</td>
+              <td>400</td>
               <td>Amp</td>
               <td>75% Breaker</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.ia != undefined">{{ valueDisplay.ia }}</td>
+              <td *ngIf="valueDisplay.ia == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.ia != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.ia == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Ib</td>
-              <td>{{ valueDisplay.ib }}</td>
+              <td>400</td>
               <td>Amp</td>
               <td>75% Breaker</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.ib != undefined">{{ valueDisplay.ib }}</td>
+              <td *ngIf="valueDisplay.ib == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.ib != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.ib == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Ic</td>
-              <td>{{ valueDisplay.ic }}</td>
+              <td>400</td>
               <td>Amp</td>
               <td>75% Breaker</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.ic != undefined">{{ valueDisplay.ic }}</td>
+              <td *ngIf="valueDisplay.ic == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.ic != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.ic == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>In</td>
-              <td>{{ valueDisplay.i_n }}</td>
+              <td>400</td>
               <td>Amp</td>
               <td>75% Breaker</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i_n != undefined">{{ valueDisplay.i_n }}</td>
+              <td *ngIf="valueDisplay.i_n == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i_n != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i_n == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Iare</td>
-              <td>{{ valueDisplay.iare }}</td>
+              <td>400</td>
               <td>Amp</td>
               <td>75% Breaker</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.iare != undefined">{{ valueDisplay.iare }}</td>
+              <td *ngIf="valueDisplay.iare == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.iare != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.iare == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -351,7 +505,7 @@
   <!-- END 2 CARD ROW 2 -->
 
   <!-- 2 CARD ROW 3 -->
-  <div class="row row-margin" style="margin-top: 16px;">
+  <div class="row row-margin" style="margin-top: 8px;">
     <!-- CARD 1 -->
     <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
       <div class="card-border-25" style="height: 100%;">
@@ -374,8 +528,16 @@
         </div>
         <!-- END LOADING -->
 
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="powerQualityChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -389,27 +551,51 @@
           <tbody>
             <tr>
               <td>P</td>
-              <td>{{ valueDisplay.p }}</td>
+              <td>-</td>
               <td>kw</td>
               <td>-</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.p != undefined">{{ valueDisplay.p }}</td>
+              <td *ngIf="valueDisplay.p == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.p != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.p == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>Q</td>
-              <td>{{ valueDisplay.q }}</td>
+              <td>-</td>
               <td>kvar</td>
               <td>-</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.q != undefined">{{ valueDisplay.q }}</td>
+              <td *ngIf="valueDisplay.q == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.q != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.q == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>S</td>
-              <td>{{ valueDisplay.s }}</td>
+              <td>-</td>
               <td>kva</td>
               <td>-</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.s != undefined">{{ valueDisplay.s }}</td>
+              <td *ngIf="valueDisplay.s == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.s != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.s == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -440,8 +626,16 @@
         </div>
         <!-- END LOADING -->
 
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="PowerFacQChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -455,35 +649,67 @@
           <tbody>
             <tr>
               <td>PFa</td>
-              <td>{{ valueDisplay.pfa }}</td>
+              <td>0.85</td>
               <td>-</td>
               <td>> 0.85</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.pfa != undefined">{{ valueDisplay.pfa }}</td>
+              <td *ngIf="valueDisplay.pfa == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.pfa != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.pfa == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>PFb</td>
-              <td>{{ valueDisplay.pfb }}</td>
+              <td>0.85</td>
               <td>-</td>
               <td>> 0.85</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.pfb != undefined">{{ valueDisplay.pfb }}</td>
+              <td *ngIf="valueDisplay.pfb == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.pfb != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.pfb == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>PFc</td>
-              <td>{{ valueDisplay.pfc }}</td>
+              <td>0.85</td>
               <td>-</td>
               <td>> 0.85</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.pfc != undefined">{{ valueDisplay.pfc }}</td>
+              <td *ngIf="valueDisplay.pfc == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.pfc != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.pfc == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>PF</td>
-              <td>{{ valueDisplay.pf }}</td>
+              <td>0.85</td>
               <td>-</td>
               <td>> 0.85</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.pf != undefined">{{ valueDisplay.pf }}</td>
+              <td *ngIf="valueDisplay.pf == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.pf != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.pf == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -495,7 +721,7 @@
   <!-- END 2 CARD ROW 3 -->
 
   <!-- 2 CARD ROW 4 -->
-  <div class="row row-margin" style="margin-top: 16px;">
+  <div class="row row-margin" style="margin-top: 8px;">
     <!-- CARD 1 -->
     <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
       <div class="card-border-25" style="height: 100%;">
@@ -518,8 +744,16 @@
         </div>
         <!-- END LOADING -->
 
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="totalHarDisVoltChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -533,27 +767,51 @@
           <tbody>
             <tr>
               <td>%THDVa</td>
-              <td>< {{ valueDisplay.thdva }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.thdva != undefined">{{ valueDisplay.thdva }}%</td>
+              <td *ngIf="valueDisplay.thdva == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.thdva != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.thdva == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>%THDVb</td>
-              <td>< {{ valueDisplay.thdvb }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.thdvb != undefined">{{ valueDisplay.thdvb }}%</td>
+              <td *ngIf="valueDisplay.thdvb == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.thdvb != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.thdvb == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>%THDVc</td>
-              <td>< {{ valueDisplay.thdvc }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.thdvc != undefined">{{ valueDisplay.thdvc }}%</td>
+              <td *ngIf="valueDisplay.thdvc == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.thdvc != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.thdvc == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -584,8 +842,16 @@
         </div>
         <!-- END LOADING -->
         
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="totalHarDisCurChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -599,35 +865,67 @@
           <tbody>
             <tr>
               <td>%THDIa</td>
-              <td>< {{ valueDisplay.thdia }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.thdia != undefined">{{ valueDisplay.thdia }}%</td>
+              <td *ngIf="valueDisplay.thdia == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.thdia != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.thdia == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>%THDIb</td>
-              <td>< {{ valueDisplay.thdib }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.thdib != undefined">{{ valueDisplay.thdib }}%</td>
+              <td *ngIf="valueDisplay.thdib == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.thdib != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.thdib == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>%THDIc</td>
-              <td><{{ valueDisplay.thdic }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.thdic != undefined">{{ valueDisplay.thdic }}%</td>
+              <td *ngIf="valueDisplay.thdic == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.thdic != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.thdic == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>%THDIn</td>
-              <td><{{ valueDisplay.thdin }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.thdin != undefined">{{ valueDisplay.thdin }}%</td>
+              <td *ngIf="valueDisplay.thdin == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.thdin != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.thdin == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -639,7 +937,7 @@
   <!-- END 2 CARD ROW 4 -->
 
   <!-- 2 CARD ROW 5 -->
-  <div class="row row-margin" style="margin-top: 16px;">
+  <div class="row row-margin" style="margin-top: 8px;">
     <!-- CARD 1 -->
     <div class="col-12 col-md-12 col-lg-6 col-padding tablet-mt-8 phone-mt-8">
       <div class="card-border-25" style="height: 100%;">
@@ -662,8 +960,16 @@
         </div>
         <!-- END LOADING -->
 
+        <!-- CHART -->
+        <div style="padding: 64px 16px 0px 16px;">
+          <div class="display" [class.displayNone]="valueDisplay == undefined">
+            <canvas id="totalHarDisChart"></canvas>
+          </div>
+        </div>
+        <!-- END CHART -->
+
         <!-- ROW 2 TABLE -->
-        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+        <table *ngIf="valueDisplay != undefined" class="color-white text-center table table-borderless" style="margin-top: 32px; margin-bottom:45px;">
           <thead>
             <tr>
               <th scope="col">Parameter</th>
@@ -677,59 +983,115 @@
           <tbody>
             <tr>
               <td>I3</td>
-              <td><{{ valueDisplay.i3 }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i3 != undefined">{{ valueDisplay.i3 }}%</td>
+              <td *ngIf="valueDisplay.i3 == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i3 != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i3 == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>I5</td>
-              <td><{{ valueDisplay.i5 }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i5 != undefined">{{ valueDisplay.i5 }}%</td>
+              <td *ngIf="valueDisplay.i5 == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i5 != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i5 == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>I7</td>
-              <td><{{ valueDisplay.i7 }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i7 != undefined">{{ valueDisplay.i7 }}%</td>
+              <td *ngIf="valueDisplay.i7 == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i7 != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i7 == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>I9</td>
-              <td><{{ valueDisplay.i9 }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i9 != undefined">{{ valueDisplay.i9 }}%</td>
+              <td *ngIf="valueDisplay.i9 == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i9 != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i9 == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>I11</td>
-              <td><{{ valueDisplay.i11 }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i11 != undefined">{{ valueDisplay.i11 }}%</td>
+              <td *ngIf="valueDisplay.i11 == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i11 != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i11 == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>I13</td>
-              <td><{{ valueDisplay.i13 }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i13 != undefined">{{ valueDisplay.i13 }}%</td>
+              <td *ngIf="valueDisplay.i13 == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i13 != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i13 == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
             <tr>
               <td>I15</td>
-              <td><{{ valueDisplay.i15 }}%</td>
+              <td><8%</td>
               <td>%</td>
               <td>IEEE519-1992 8% for MDB</td>
-              <td>-</td>
-              <td>ALIVE</td>
+              <td *ngIf="valueDisplay.i15 != undefined">{{ valueDisplay.i15 }}%</td>
+              <td *ngIf="valueDisplay.i15 == undefined">-</td>
+              <td>
+                <div *ngIf="valueDisplay.i15 != undefined" class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+                <div *ngIf="valueDisplay.i15 == undefined" class="warning">
+                  <p class="color-white mb-0">WARNING</p>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

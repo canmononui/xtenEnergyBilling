@@ -24,6 +24,7 @@ export class EnergyPowerQualityAllMeterComponent implements OnInit {
     const headers = new HttpHeaders({"Content-Type": "application/json"});
     this.http.get<any>( url, { headers } ).subscribe(data => {
       this.valueAllMeter = data.meta.response_data;
+      console.log(this.valueAllMeter)
     },
     error => {
       console.error(error);

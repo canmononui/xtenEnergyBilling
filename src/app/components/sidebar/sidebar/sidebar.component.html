@@ -1,49 +1,113 @@
-<div class="sidebar background-color-dark border-radius-15">
-  <!-- BTN SIDEBAR ARROW RIGHT -->
-  <button type="button" class="btn btn-sidebar-arrow-right">
-    <img class="sidebar-arrow-right" src="../../assets/img/SidebarArrowRight.svg">
+<div *ngIf="path.login == false" class="sidebar background-color-dark border-radius-15">
+  <!-- FOR ENERGY -->
+  <div *ngIf="path.energyDashboard || path.energyExplore || path.energyPowerQuality || path.energyPowerQualityAllMeter || path.energyReport || path.energySettingGroupSensor || path.energySettingNotification">
+    <!-- BTN SIDEBAR ARROW RIGHT -->
+  <button type="button" data-toggle="modal" data-target="#modalSidebar" class="btn btn-sidebar-arrow-right">
+    <img class="sidebar-arrow-right" src="../../assets/img/dropdown/DropdownsIconRight.svg">
   </button>
   <!-- END BTN SIDEBAR ARROW RIGHT -->
 
   <!-- ROW BUTTON -->
   <div style="margin-top: 100px;">
     <!-- BTN DASHBOARD -->
-    <!-- <div style="background-color: #FFFFFF; border-radius: 7px; opacity: 40%; padding: 7px; width: fit-content;"> -->
-    <div [routerLink]="['/energy-dashboard']"> 
-      <div type="button" class="btn sidebar-icon">
-        <i class="fa fa-pie-chart fa-lg color-white" style="margin-left: -3px;" aria-hidden="true"></i>
+    <div [class.margin-top-30]="path.energyDashboard == false" [class.sidebar-munu-active]="path.energyDashboard == true">
+      <div [routerLink]="['/energy-dashboard']"> 
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-pie-chart fa-lg" style="margin-left: -3px;" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
-    <!-- </div> -->
     <!-- END BTN DASHBOARD -->
     <!-- BTN POWER QUALITY -->
-    <div [routerLink]="['/energy-power-quality']" style="margin-top: 30px;">
-      <div type="button" class="btn sidebar-icon">
-        <i class="fa fa-bolt fa-lg color-white" style="margin-left: 3px;" aria-hidden="true"></i>
+    <div [class.margin-top-30]="path.energyPowerQuality == false || path.energyPowerQualityAllMeter == false" [class.sidebar-munu-active]="path.energyPowerQuality == true || path.energyPowerQualityAllMeter == true">
+      <div [routerLink]="['/energy-power-quality']">
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-bolt fa-lg" style="margin-left: 3px;" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
     <!-- END BTN POWER QUALITY -->
     <!-- BTN EXPLORE -->
-    <div [routerLink]="['/energy-explore']" style="margin-top: 30px;">
-      <div type="button" class="btn sidebar-icon">
-        <i class="fa fa-search fa-lg color-white" style="margin-left: -3px;" aria-hidden="true"></i>
+    <div [class.margin-top-30]="path.energyExplore == false" [class.sidebar-munu-active]="path.energyExplore == true">
+      <div [routerLink]="['/energy-explore']">
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-search fa-lg" style="margin-left: -1.5px;" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
     <!-- END BTN EXPLORE -->
     <!-- BTN REPORT -->
-    <div [routerLink]="['/energy-report']" style="margin-top: 30px;">
-      <div type="button" class="btn sidebar-icon">
-        <i class="fa fa-area-chart fa-lg color-white" style="margin-left: -4px;" aria-hidden="true"></i>
-      </div></div>
+    <div [class.margin-top-30]="path.energyReport == false" [class.sidebar-munu-active]="path.energyReport == true">
+      <div [routerLink]="['/energy-report']">
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-area-chart fa-lg" style="margin-left: -4px;" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
     <!-- END BTN REPORT -->
     <!-- BTN SETTING -->
-    <div [routerLink]="['/energy-setting-group-sensor']" style="margin-top: 30px;">
-      <div type="button" class="btn sidebar-icon">
-        <i class="fa fa-wrench fa-lg color-white" style="margin-left: -2px;" aria-hidden="true"></i>
-      </div>
+    <div type="button" data-toggle="modal" data-target="#modalSidebar" [class.margin-top-30]="path.energySettingGroupSensor == false || path.energySettingNotification == false" [class.sidebar-munu-active]="path.energySettingGroupSensor == true || path.energySettingNotification == true">
+      <!-- <div [routerLink]="['/energy-setting-group-sensor']"> -->
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-wrench fa-lg" style="margin-left: -2px;" aria-hidden="true"></i>
+        </div>
+      <!-- </div> -->
     </div>
     <!-- END BTN SETTING -->
   </div>
   <!-- END ROW BUTTON -->
   <img class="xten-logo" style="position: absolute; bottom: 45px; left: 34px;" src="../../assets/img/x-logo.svg">
+  </div>
+  
+  <!-- FOR ENVIRONMENT -->
+  <div *ngIf="path.environmentDashboard || path.environmentReport">
+    <!-- BTN SIDEBAR ARROW RIGHT -->
+  <button class="disable" disabled type="button" data-toggle="modal" data-target="#modalSidebar" class="btn btn-sidebar-arrow-right">
+    <img class="sidebar-arrow-right" src="../../assets/img/dropdown/DropdownsIconRight.svg">
+  </button>
+  <!-- END BTN SIDEBAR ARROW RIGHT -->
+
+  <!-- ROW BUTTON -->
+  <div style="margin-top: 100px;">
+    <!-- BTN DASHBOARD -->
+    <div [class.margin-top-30]="path.environmentDashboard == false" [class.sidebar-munu-active]="path.environmentDashboard == true">
+      <div [routerLink]="['/environment-dashboard']"> 
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-pie-chart fa-lg" style="margin-left: -3px;" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <!-- END BTN DASHBOARD -->
+    
+    <!-- BTN EXPLORE -->
+    <div class="disable" disabled [class.margin-top-30]="path.energyExplore == false" [class.sidebar-munu-active]="path.energyExplore == true">
+      <div [routerLink]="['/environment-explore']">
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-search fa-lg" style="margin-left: -1.5px;" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <!-- END BTN EXPLORE -->
+    <!-- BTN REPORT -->
+    <div [class.margin-top-30]="path.environmentReport == false" [class.sidebar-munu-active]="path.environmentReport == true">
+      <div [routerLink]="['/environment-report']">
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-area-chart fa-lg" style="margin-left: -4px;" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <!-- END BTN REPORT -->
+    <!-- BTN SETTING -->
+    <div class="disable" disabled type="button" data-toggle="modal" data-target="#modalSidebar" [class.margin-top-30]="path.energySettingGroupSensor == false || path.energySettingNotification == false" [class.sidebar-munu-active]="path.energySettingGroupSensor == true || path.energySettingNotification == true">
+      <!-- <div [routerLink]="['/energy-setting-group-sensor']"> -->
+        <div type="button" class="btn sidebar-icon">
+          <i class="fa fa-wrench fa-lg" style="margin-left: -2px;" aria-hidden="true"></i>
+        </div>
+      <!-- </div> -->
+    </div>
+    <!-- END BTN SETTING -->
+  </div>
+  <!-- END ROW BUTTON -->
+  <img class="xten-logo" style="position: absolute; bottom: 45px; left: 34px;" src="../../assets/img/x-logo.svg">
+  </div>
 </div>

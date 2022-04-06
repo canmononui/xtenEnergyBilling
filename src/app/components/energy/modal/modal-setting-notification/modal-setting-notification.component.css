@@ -1,0 +1,21 @@
+.day {
+  background-color: #FFF;
+  color: #20232A;
+  border: 2px solid #808080;
+  padding-top: 2px; 
+  padding-bottom: 2px; 
+  padding-left: 7px; 
+  padding-right: 7px; 
+  border-radius: 5px;
+}
+
+.day-active {
+  background-color: #5B78FA;
+  color: #FFF;
+  border: 2px solid #5B78FA;
+  padding-top: 2px; 
+  padding-bottom: 2px; 
+  padding-left: 7px; 
+  padding-right: 7px; 
+  border-radius: 5px;
+}

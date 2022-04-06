@@ -5,6 +5,8 @@ import { LinkPathService } from '../../../services/link-path.service';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import 'chartjs-top-round-bar';
+// Datepicker
+// import { NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-energy-explore',
@@ -13,7 +15,7 @@ import 'chartjs-top-round-bar';
 })
 export class EnergyExploreComponent implements OnInit {
 
-  public leftSideBarDisplay = true;
+  public rightSideBarDisplay = true;
   public waittingSearch = true;
   public valueSensorTree: any = [{
           "id": 1,
@@ -137,7 +139,8 @@ export class EnergyExploreComponent implements OnInit {
   public valueParameterMeter: any;
   public selectParameterMdb:any = [];
   public selectParameterMeter:any = [];
-  chartA: any = [];
+  public clickButtonChart:any = "A";
+  public chartA: any = [];
 
   constructor(
     private http: HttpClient,
@@ -229,12 +232,29 @@ export class EnergyExploreComponent implements OnInit {
     this.valueSensorTree[indexI].listUnderSensors[indexJ].dropdownSelect = data;
   }
 
-  onClickGraphABtn() {
-    this.leftSideBarDisplay = true;
+  onClickGraphABtn(button:any) {
+    if(button == "A"){
+      this.clickButtonChart = "A";
+    }
+    else if(button == "B"){
+      this.clickButtonChart = "B";
+    }
+    else if(button == "C"){
+      this.clickButtonChart = "C";
+    }
+    else if(button == "D"){
+      this.clickButtonChart = "D";
+    }
+    this.rightSideBarDisplay = true;
   }
   
   onClickCloseBtn() {
-    this.leftSideBarDisplay = false;
+    this.rightSideBarDisplay = false;
+    // this.waittingSearch = false;
+  }
+
+  onClickSubmitBtn() {
+    this.rightSideBarDisplay = false;
     this.waittingSearch = false;
   }
 
@@ -248,14 +268,14 @@ export class EnergyExploreComponent implements OnInit {
                  '21', '22', '23', '24'],
         datasets: [
             {
-              label: 'To Day',
-              data: [30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000, 30000, 50000, 75000, 25000, 55000, 60000],
+              label: 'kwh',
+              data: [40000, 50000, 65000, 55000, 55000, 60000, 50000, 55000, 65000, 55000, 55000, 70000, 50000, 60000, 75000, 65000, 55000, 60000, 60000, 50000, 75000, 65000, 55000, 60000],
               borderWidth: 0,
               backgroundColor: '#147AD6',
             },
             {
-              label: 'Yesterday',
-              data: [20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000, 20000, 45000, 25000, 20000, 35000, 25000],
+              label: 'vab',
+              data: [65000, 55000, 55000, 65000, 65000, 70000, 60000, 65000, 75000, 75000, 65000, 55000, 70000, 60000, 55000, 75000, 65000, 55000, 65000, 55000, 65000, 60000, 65000, 55000],
               borderWidth: 0,
               backgroundColor: '#EC6666'
             }]
@@ -291,5 +311,6 @@ export class EnergyExploreComponent implements OnInit {
     })
     // END CHART A
   }
+
 
 }

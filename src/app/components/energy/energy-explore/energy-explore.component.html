@@ -1,7 +1,7 @@
 <div style="padding-bottom: 15px;">
   <div class="row">
     <div class="col">
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-auto">
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,21 +40,21 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="col-auto text-right">
       <div class="row">
         <div class="col-auto">
-          <button (click)="onClickGraphABtn()" type="button" class="btn btn-color-active">Graph A</button>
+          <button (click)="onClickGraphABtn('A')" type="button" class="btn btn-color" [class.btn-color-active]="clickButtonChart == 'A'">Graph A</button>
         </div>
         <div class="col-auto pl-0">
-          <button type="button" class="btn btn-color">Graph B</button>
+          <button (click)="onClickGraphABtn('B')" type="button" class="btn btn-color" [class.btn-color-active]="clickButtonChart == 'B'">Graph B</button>
         </div>
         <div class="col-auto pl-0">
-          <button type="button" class="btn btn-color">Graph C</button>
+          <button (click)="onClickGraphABtn('C')" type="button" class="btn btn-color" [class.btn-color-active]="clickButtonChart == 'C'">Graph C</button>
         </div>
         <div class="col-auto pl-0">
-          <button type="button" class="btn btn-color">Graph D</button>
+          <button (click)="onClickGraphABtn('D')" type="button" class="btn btn-color" [class.btn-color-active]="clickButtonChart == 'D'">Graph D</button>
         </div>
         <div class="col-auto pl-0">
           <input type="text" class="form-control input-color" placeholder="ค้นหา">
@@ -63,11 +63,11 @@
     </div>
   </div>
 
-  <!-- LEFT SIDE BAR -->
-  <div *ngIf="leftSideBarDisplay" class="modal-sidebar">
+  <!-- RIGHT SIDE BAR -->
+  <div *ngIf="rightSideBarDisplay" class="modal-sidebar" style="overflow: auto;">
     <div class="row">
       <div class="col align-self-center">
-        <p class="color-white mb-0">Graph A</p>
+        <p class="color-white mb-0">Graph {{ clickButtonChart }}</p>
       </div>
       <div class="col-auto align-self-center">
         <button (click)="onClickCloseBtn()" type="button" class="btn btn-sidebar-x">
@@ -76,49 +76,68 @@
       </div>
     </div>
 
-
     <div *ngFor="let data of valueSensorTree; let i = index;">
       <p class="color-white mb-0" style="margin-top: 15px;">{{ data.name }}</p>
-      <!-- DROPDOWN GROUP -->
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <div class="row">
-            <div class="col color-dark text-left">
-              <p class="mb-0">{{ data.dropdownSelect }}</p>
-            </div>
-            <div class="col-auto pl-0 justify-content-center align-self-center">
-              <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
-            </div>
+      <div class="row row-margin">
+        <!-- CHECK BOX -->
+        <div class="col-auto col-padding" style="margin-top: 7px;"> 
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" ชid="defaultCheck1">
           </div>
-        </button>
-        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-          <div *ngFor="let data of valueParameterMdb;">
-            <a (click)="onParameterMdb(i, data)" class="dropdown-item">{{ data }}</a>
+        </div>
+        <!-- DROPDOWN GROUP -->
+        <div class="col col-padding">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col color-dark text-left">
+                  <p class="mb-0">{{ data.dropdownSelect }}</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+              <div *ngFor="let data of valueParameterMdb;">
+                <a (click)="onParameterMdb(i, data)" class="dropdown-item">{{ data }}</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- END DROPDOWN GROUP -->
+
       <div *ngFor="let _data of data.listUnderSensors; let j = index;" style="margin-left: 15px;">
         <p class="color-white mb-0" style="margin-top: 15px;">{{ _data.name }}</p>
-        <!-- DROPDOWN SENSOR -->
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="row">
-              <div class="col color-dark text-left">
-                <p class="mb-0">{{ _data.dropdownSelect }}</p>
-              </div>
-              <div class="col-auto pl-0 justify-content-center align-self-center">
-                <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
-              </div>
-            </div>
-          </button>
-          <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-            <div *ngFor="let data of valueParameterMeter;">
-              <a (click)="onParameterMeter(i, j, data)" class="dropdown-item">{{ data }}</a>
+        <div class="row row-margin">
+          <!-- CHECK BOX -->
+          <div class="col-auto col-padding" style="margin-top: 7px;"> 
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
             </div>
           </div>
+          <!-- DROPDOWN GROUP -->
+          <div class="col col-padding">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="row">
+                  <div class="col color-dark text-left">
+                    <p class="mb-0">{{ _data.dropdownSelect }}</p>
+                  </div>
+                  <div class="col-auto pl-0 justify-content-center align-self-center">
+                    <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
+                  </div>
+                </div>
+              </button>
+              <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                <div *ngFor="let data of valueParameterMeter;">
+                  <a (click)="onParameterMeter(i, j, data)" class="dropdown-item">{{ data }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END DROPDOWN SENSOR -->
         </div>
-        <!-- END DROPDOWN SENSOR -->
       </div>
     </div>
 
@@ -128,7 +147,7 @@
       <button class="btn btn-secondary dropdown-white w-100" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="row">
           <div class="col color-dark text-left">
-            <p class="mb-0">Date</p>
+            <p class="mb-0">โปรดเลือกช่วงเวลา</p>
           </div>
           <div class="col-auto pl-0 justify-content-center align-self-center">
             <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIconBlack.svg">
@@ -136,14 +155,16 @@
         </div>
       </button>
       <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item">Floor 1</a>
+        <!-- <a class="dropdown-item">Floor 1</a>
         <a class="dropdown-item">Floor 2</a>
-        <a class="dropdown-item">Floor 3</a>
+        <a class="dropdown-item">Floor 3</a> -->
+        <a class="dropdown-item"></a>
       </div>
     </div>
     <!-- END DROPDOWN DATEPICKER -->
+    <button (click)="onClickSubmitBtn()" type="button" class="btn btn-color-active w-100 mt-4">ค้นหาข้อมูล</button>
   </div>  
-  <!-- END LEFT SIDE BAR -->
+  <!-- END RIGHT SIDE BAR -->
 
   <!-- WAITTING SEARCH-->
   <div [hidden]="!waittingSearch" class="text-center" style="margin-top: 375px;">

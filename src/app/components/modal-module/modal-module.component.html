@@ -1,1 +1,51 @@
-<p>modal-module works!</p>
+<!-- MODAL MODULE MENU -->
+<div class="modal fade" id="modalModuleMenu" tabindex="-1" role="dialog" aria-labelledby="modalModuleMenuTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 650px;" role="document">
+    <div class="modal-content" style="height: 750px; border-radius: 15px;">
+      <div class="m-4">
+        <!-- HEADER -->
+        <div class="row row-margin">
+          <div class="col col-padding align-self-center">
+            <h5 class="mb-0">Module Menu</h5>
+          </div>
+          <div class="col-auto col-padding">
+            <button type="button" data-dismiss="modal" class="btn btn-sidebar-x">
+              <img class="sidebar-arrow-right" src="../../assets/img/XIcon.svg">
+            </button>
+          </div>
+        </div>
+        <!-- MENU -->
+        <div class="row row-margin" style="margin-top: 32px;">
+          <div class="col-3 col-padding">
+            <div class="text-center module-menu disable" disabled>
+              <img style="max-width: 85px;" src="../../assets/img/moduleIcon/dashboard/dashboard.svg">
+              <p class="mt-3 mb-0">Dashboard</p>
+            </div>
+          </div>
+          <div class="col-3 col-padding">
+            <div [routerLink]="['/energy-dashboard']" class="text-center" type="button" data-dismiss="modal"
+            [class.module-menu-active]="path.energyDashboard || path.energyExplore || path.energyPowerQuality || path.energyPowerQualityAllMeter || path.energyReport || path.energySettingGroupSensor || path.energySettingNotification" 
+            [class.module-menu]="path.energyDashboard == false || path.energyExplore == false || path.energyPowerQuality == false || path.energyPowerQualityAllMeter == false || path.energyReport == false || path.energySettingGroupSensor == false || path.energySettingNotification == false">
+              <img style="max-width: 85px;" src="../../assets/img/moduleIcon/energy/lightingActive.svg">
+              <p class="mt-3 mb-0">Energy</p>
+            </div>
+          </div>
+          <div class="col-3 col-padding">
+            <div class="text-center module-menu disable" disabled>
+              <img style="max-width: 85px;" src="../../assets/img/moduleIcon/billing/invoice.svg">
+              <p class="mt-3 mb-0">Billing</p>
+            </div>
+          </div>
+          <div class="col-3 col-padding">
+            <div [routerLink]="['/environment-dashboard']" class="text-center" type="button" data-dismiss="modal"
+            [class.module-menu-active]="path.environmentDashboard || path.environmentReport" 
+            [class.module-menu]="path.environmentDashboard == false || path.environmentReport == false">
+              <img style="max-width: 85px;" src="../../assets/img/moduleIcon/climate/climate.svg">
+              <p class="mt-3 mb-0">Environment</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

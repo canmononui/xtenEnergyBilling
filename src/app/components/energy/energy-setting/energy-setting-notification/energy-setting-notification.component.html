@@ -1,1 +1,95 @@
-<p>energy-setting-notification works!</p>
+<app-modal-setting-notification></app-modal-setting-notification>
+<div style="padding-bottom: 15px;">
+  <!-- ADD NEW DROUP SENSOR -->
+  <div class="row text-right">
+    <div class="col">
+      <button type="button" data-toggle="modal" data-target="#modalSettingNotification" class="btn btn-color-active">
+        <div class="row row-margin">
+          <div class="col-auto col-padding">
+            <i class="fa fa-plus-circle fa-lg color-white" aria-hidden="true"></i>
+          </div>
+          <div class="col-auto col-padding">
+            <p class="color-white mb-0">New Notification</p>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+  <!-- DATA TABLE -->
+  <div class="row row-margin" style="margin-top: 30px;">
+    <div class="col col-padding">
+      <div class="card-border-25" style="height: 100%;">
+        <!-- TOP -->
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-bell fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Notification</p>
+          </div>
+        </div>
+        <!-- END TOP -->
+
+        <!-- TABLE -->
+        <table class="color-white text-center table table-borderless" style="margin-top: 60px; margin-bottom:45px;">
+          <thead>
+            <tr>
+              <th scope="col">No.</th>
+              <th scope="col">Sensor/Group</th>
+              <th scope="col">Sensor id</th>
+              <th scope="col">Parameter</th>
+              <th scope="col">Set Point</th>
+              <th scope="col">Day</th>
+              <th scope="col">Time</th>
+              <th scope="col">Status</th>
+              <th scope="col">Configuration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Active_Energy</td>
+              <td>Active_Energy1, Active_Energy2, Active_Energy3</td>
+              <td>Active_Energy</td>
+              <td>400</td>
+              <td>2022/03/20</td>
+              <td>09:35:55</td>
+              <td>
+                <div class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+              </td>
+              <td>
+                <button (click)="onClickBtnNoti(1)" type="button" class="btn btn-sm btn-toggle" [class.active]="notificationStatus1" data-toggle="button" aria-pressed="true" autocomplete="off">
+                  <div class="handle"></div>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Volt_B_N</td>
+              <td>Volt_B_N1, Volt_B_N2, Volt_B_N3</td>
+              <td>Volt_B_N</td>
+              <td>220</td>
+              <td>2022/03/20</td>
+              <td>16:09:34</td>
+              <td>
+                <div class="alive">
+                  <p class="color-white mb-0">ALIVE</p>
+                </div>
+              </td>
+              <td>
+                <button (click)="onClickBtnNoti(2)" type="button" class="btn btn-sm btn-toggle" [class.active]="notificationStatus2" data-toggle="button" aria-pressed="true" autocomplete="off">
+                  <div class="handle"></div>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- END TABLE -->
+      </div>
+    </div>
+  </div>
+</div>

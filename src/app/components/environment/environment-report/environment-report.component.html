@@ -1,0 +1,223 @@
+<app-modal-environment-report-print></app-modal-environment-report-print>
+<app-modal-environment-report-save></app-modal-environment-report-save>
+<div style="padding-bottom: 15px;">
+  <div class="row">
+    <div class="col">
+      <div class="row">
+        <div class="col-auto">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Tower A</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Tower A</a>
+              <a class="dropdown-item">Tower B</a>
+              <a class="dropdown-item">Tower C</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-auto pl-0">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-color" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="row">
+                <div class="col-auto">
+                  <p class="mb-0">Floor 1</p>
+                </div>
+                <div class="col-auto pl-0 justify-content-center align-self-center">
+                  <img class="dropdown-icon" src="../../assets/img/dropdown/DropdownsIcon.svg">
+                </div>
+              </div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item">Floor 1</a>
+              <a class="dropdown-item">Floor 2</a>
+              <a class="dropdown-item">Floor 3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto text-right">
+      <input type="text" class="form-control input-color" placeholder="ค้นหา">
+    </div>
+  </div>
+
+  <div class="card-border-25" style="height: 100%; margin-top: 30px;">
+    <!-- TITLE -->
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-thermometer-empty fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Report</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-auto align-self-center">
+        <div class="row text-right">
+          <div class="col text-center">
+            <div type="button" data-toggle="modal" data-target="#modalReportSave">
+              <i class="fa fa-save fa-lg color-white" aria-hidden="true"></i>
+            <p class="color-white mt-1 mb-0" style="font-size: 0.8rem;">SAVE</p>
+            </div>
+          </div>
+          <div class="col-auto text-center pl-2">
+            <div type="button" data-toggle="modal" data-target="#modalReportPrint">
+              <i class="fa fa-print fa-lg color-white" aria-hidden="true"></i>
+              <p class="color-white mt-1 mb-0" style="font-size: 0.8rem;">PRINT</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END TITLE -->
+
+    <!-- ROW GRID 4 CARD -->
+    <div class="row row-margin" style="margin-top: 15px;">
+      <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+        <div class="card-border-1-25" style="height: 100%;">
+          <div class="row mt-4 mb-4">
+            <div class="col">
+              <div class="row">
+                <div class="col-auto">
+                  <div class="top-icon">
+                    <i class="fa fa-thermometer-empty fa-lg" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col p-0 align-self-center">
+                  <p class="color-white mb-0">Temperature</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto align-self-center">
+              <h3 class="color-white mb-0">23 C</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+        <div class="card-border-1-25" style="height: 100%;">
+          <div class="row mt-4 mb-4">
+            <div class="col">
+              <div class="row">
+                <div class="col-auto">
+                  <div class="top-icon">
+                    <i class="fa fa-tint fa-lg" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col p-0 align-self-center">
+                  <p class="color-white mb-0">Humidity</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto align-self-center">
+              <h3 class="color-white mb-0">124,500 %</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+        <div class="card-border-1-25" style="height: 100%;">
+          <div class="row mt-4 mb-4">
+            <div class="col">
+              <div class="row">
+                <div class="col-auto">
+                  <div class="top-icon">
+                    <i class="fa fa-cloud fa-lg" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col p-0 align-self-center">
+                  <p class="color-white mb-0">PM 2.5</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto align-self-center">
+              <h3 class="color-white mb-0">3,600 kW</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-12 col-lg-3 col-padding tablet-mt-8 phone-mt-8">
+        <div class="card-border-1-25" style="height: 100%;">
+          <div class="row mt-4 mb-4">
+            <div class="col">
+              <div class="row">
+                <div class="col-auto">
+                  <div class="top-icon">
+                    <i class="fa fa-bullseye fa-lg" aria-hidden="true"></i>
+                  </div>
+                </div>
+                <div class="col p-0 align-self-center">
+                  <p class="color-white mb-0">C02</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto align-self-center">
+              <h3 class="color-white mb-0">54,000 Bath</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!-- END ROW GRID 4 CARD -->
+    
+    <!-- TITLE -->
+    <div class="row" style="margin-top: 32px;">
+      <div class="col">
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-thermometer-empty fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Environment Temperature / Humidity (Working Hour)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END TITLE -->
+    <div class="card-border-1-25" style="margin-top: 32px;">
+      <canvas id="tempHumiChart"></canvas>
+    </div>
+
+    <!-- TABLE -->
+
+    <!-- END TABLE -->
+
+    <!-- TITLE -->
+    <div class="row" style="margin-top: 32px;">
+      <div class="col">
+        <div class="row">
+          <div class="col-auto">
+            <div class="top-icon">
+              <i class="fa fa-thermometer-empty fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="col p-0 align-self-center">
+            <p class="color-white mb-0">Environment PM2.5 / C02 (Working Hour)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END TITLE -->
+    <div class="card-border-1-25" style="margin-top: 32px;">
+      <canvas id="pm25Co2Chart"></canvas>
+    </div>
+
+    <!-- TABLE -->
+
+    <!-- END TABLE -->
+  </div>
+</div>

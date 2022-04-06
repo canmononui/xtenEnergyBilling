@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LinkPathService } from '../../../../services/link-path.service';
 
 @Component({
   selector: 'app-energy-setting-group-sensor',
@@ -7,9 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnergySettingGroupSensorComponent implements OnInit {
 
-  constructor() { }
+  groupSensorStatus1:any = true;
+  groupSensorStatus2:any = true;
+
+  constructor(
+    public path: LinkPathService,) { }
 
   ngOnInit(): void {
+    this.path.setPath('energySettingGroupSensor');
+  }
+
+  onClickBtnNoti(number: any){
+    if(number == 1) {
+      if(this.groupSensorStatus1){
+        this.groupSensorStatus1 = false;
+      }
+      else{
+        this.groupSensorStatus1 = true;
+      }
+    }
+    if(number == 2) {
+      if(this.groupSensorStatus2){
+        this.groupSensorStatus2 = false;
+      }
+      else{
+        this.groupSensorStatus2 = true;
+      }
+    }
   }
 
 }
