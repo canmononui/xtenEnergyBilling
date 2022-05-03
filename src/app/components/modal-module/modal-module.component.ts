@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LinkPathService } from '../../services/link-path.service';
+import { LinkPathService } from '../../services/link-path/link-path.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 

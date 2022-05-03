@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LinkPathService } from '../../../services/link-path.service';
+import { LinkPathService } from '../../../services/link-path/link-path.service';
 // CHART
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';

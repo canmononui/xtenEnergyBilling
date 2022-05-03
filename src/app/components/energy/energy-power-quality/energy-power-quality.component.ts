@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // CHART
 import { Chart } from 'chart.js';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LinkPathService } from '../../../services/link-path.service';
+import { LinkPathService } from '../../../services/link-path/link-path.service';
 
 @Component({
   selector: 'app-energy-power-quality',
